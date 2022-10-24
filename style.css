@@ -1,0 +1,329 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 900px;
+  margin: 0 auto;
+  padding: 50px 15px;
+}
+
+/* Список всех уроков */
+
+.lessons {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lessons-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lessons-title__img {
+  height: 70px;
+}
+
+.lessons__item {
+  width: 100%;
+  min-height: 100px;
+  border-radius: 10px;
+  border: 1px solid rgb(231, 231, 231);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15px;
+  transition: 0.2s all;
+}
+
+.lessons__item:hover {
+  box-shadow: 1px 1px 3px 0px rgba(70, 116, 151, 0.2);
+}
+
+.lessons__item-name {
+  font-weight: 600;
+  font-size: 28px;
+  transition: 0.2s all;
+}
+
+.lessons__item-name a {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.lessons__item-name:hover {
+  color: rgb(36, 184, 127);
+}
+
+.lessons__item-date {
+  margin-top: 5px;
+}
+
+.admin-panel-btn {
+  display: block;
+  width: 300px;
+  height: 50px;
+  background: linear-gradient(90deg, rgba(48, 190, 133, 1) 0%, rgba(94, 217, 185, 1) 100%);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px 0;
+  border-radius: 3px;
+  border: 1px solid rgb(209, 209, 209);
+  color: #ffff;
+  transition: 0.2s all;
+  cursor: pointer;
+  box-shadow: 8px 8px 14px 0px rgba(185, 185, 185, 0.466);
+}
+
+.admin-panel-btn:hover {
+  box-shadow: 4px 4px 8px 0px rgba(185, 185, 185, 0.466);
+}
+
+.search {
+  position: relative;
+}
+
+.search-input {
+  height: 50px;
+  width: 300px;
+  padding: 10px 45px 10px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid rgb(221, 221, 221);
+  box-shadow: 4px 4px 8px 0px #35353533;
+  transition: 0.2s all;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 2px 2px 4px 0px #adadad33;
+}
+
+.search__btn {
+  display: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  left: 260px;
+  top: 10px;
+}
+
+.search__btn-img {
+  height: 30px;
+}
+
+/* Страница урока */
+
+.go-back__link {
+  font-size: 24px;
+  transition: 0.2s all;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.go-back__link:hover {
+  color: rgb(36, 184, 127);
+}
+
+.go-back__img {
+  height: 30px;
+}
+
+.lesson-title {
+  font-size: 38px;
+  font-weight: 600;
+  margin-top: 30px;
+  color: rgb(83, 83, 83);
+}
+
+.lesson-video {
+  margin-top: 45px;
+}
+
+.lesson-content {
+  margin-top: 30px;
+  font-size: 26px;
+}
+
+.lesson-date {
+  margin-top: 15px;
+  font-size: 22px;
+  color: rgb(73, 73, 73);
+  font-weight: 600;
+}
+
+/* Админка */
+.admin-panel-title {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-panel-title__img {
+  height: 70px;
+}
+
+.admin-panel-title span {
+  font-weight: 600;
+}
+
+.admin-text {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.admin-lessons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-lessons__item {
+  width: 100%;
+  min-height: 100px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgb(210, 210, 210);
+  box-shadow: 4px 4px 8px 0px rgb(34 60 80 / 20%);
+  transition: 0.2s all;
+}
+
+.admin-lessons__item:hover {
+  box-shadow: 1px 1px 3px 0px rgba(70, 116, 151, 0.2);
+}
+
+.admin-lessons__item-descr {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-lessons__item-name {
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.admin-lessons__item-date {
+  margin-top: 5px;
+}
+
+.admin-btns-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+
+.admin-btn-img {
+  height: 30px;
+}
+
+.admin-create-lesson-btn {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: none;
+  width: 250px;
+  height: 50px;
+  border: 1px solid rgb(206, 206, 206);
+  font-size: 20px;
+  background-color: #ffff;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  cursor: pointer;
+  transition: 0.4s all;
+}
+
+.admin-create-lesson-btn:hover {
+  background-color: #00d199a6;
+  color: #ffff;
+  transform: scale(0.98);
+  box-shadow: 2px 2px 4px 0px rgba(34, 60, 80, 0.2);
+}
+
+/* Создать урок */
+.add-lesson-title {
+  font-weight: 600;
+  font-size: 34px;
+  margin-top: 25px;
+  color: rgb(55, 55, 55);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-lesson-title__img {
+  height: 70px;
+}
+
+.add-lesson-form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.add-lesson-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+  gap: 15px;
+}
+
+.add-lesson-input {
+  height: 50px;
+  border: 1px solid rgb(222, 222, 222);
+  padding: 0 15px;
+  font-size: 22px;
+  box-shadow: 4px 4px 8px 0px rgba(52, 52, 52, 0.2);
+}
+
+.add-lesson-input:focus {
+  outline: none;
+}
+
+.add-lesson-textarea {
+  height: 300px;
+  font-size: 22px;
+  padding: 15px;
+  box-shadow: 4px 4px 8px 0px rgba(52, 52, 52, 0.2);
+}
+
+.add-lesson-textarea:focus {
+  outline: none;
+}
+
+.add-lesson-save {
+  margin: 0 auto;
+  font-size: 24px;
+  font-weight: 600;
+  width: 300px;
+  height: 50px;
+  background: linear-gradient(90deg, rgba(48, 190, 129, 1) 0%, rgba(94, 217, 201, 1) 100%);
+  border: 1px solid rgb(197, 197, 197);
+  cursor: pointer;
+  box-shadow: 4px 4px 8px 0px rgba(36, 36, 36, 0.302);
+  color: white;
+  transition: 0.2s all;
+}
+
+.add-lesson-save:hover {
+  transform: scale(0.98);
+  box-shadow: 2px 2px 6px 0px rgba(36, 36, 36, 0.302);
+}
