@@ -7,3 +7,5 @@
 
   include("views/lessonTemplate.php");
 ?>
+
+<!-- Test commit -->
