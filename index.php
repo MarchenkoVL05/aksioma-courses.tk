@@ -21,7 +21,7 @@
       header("Location: index.php");
     }
     include("views/createLessonTemplate.php");
-    // Редактировать урок
+    // Редактировать урок1
   } else if ($action == "edit") {
     if (!isset($_GET["id"])) {
       header("Location: index.php");
