@@ -24,6 +24,17 @@
                 <input class="add-lesson-input" type="text" name="title" value="<?=$lesson["title"]?>"  autofocus required>
             </label>
             <label class="add-lesson-label">
+                Выберите главу, к которой относится урок
+                <div class="select">
+                    <select name="category_id">
+                        <?php foreach ($categories as $category) : ?>
+                            <option value="<?=$category['id']?>"><?=$category["category_name"]?></option>
+                        <?php endforeach?>
+                    </select>
+                    <div class="select_arrow"></div>
+                </div>
+            </label>
+            <label class="add-lesson-label">
                 Ссылка на YouTube
                 <input class="add-lesson-input" type="text" name="video" value="<?=$lesson["video"]?>">
             </label>
@@ -38,6 +49,8 @@
             <input onclick="tinyMCE.triggerSave(true,true);" class="add-lesson-save" type="submit" value="Сохранить">
         </form>
     </div>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    <script>
+        tinymce.init({ selector:'textarea', language_url: '../langs/ru.js'});
+    </script>
 </body>
 </html>

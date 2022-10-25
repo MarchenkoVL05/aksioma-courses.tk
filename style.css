@@ -21,8 +21,8 @@ a {
 
 .lessons {
   margin-top: 25px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 450px 450px;
   gap: 20px;
 }
 
@@ -30,6 +30,7 @@ a {
   display: flex;
   align-items: center;
   gap: 20px;
+  letter-spacing: 5px;
 }
 
 .lessons-title__img {
@@ -45,7 +46,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 15px;
+  padding: 10px 15px;
   transition: 0.2s all;
 }
 
@@ -55,7 +56,7 @@ a {
 
 .lessons__item-name {
   font-weight: 600;
-  font-size: 28px;
+  font-size: 22px;
   transition: 0.2s all;
 }
 
@@ -70,6 +71,11 @@ a {
 
 .lessons__item-date {
   margin-top: 5px;
+}
+
+.admin-panel-buttons-wrapper {
+  display: flex;
+  gap: 25px;
 }
 
 .admin-panel-btn {
@@ -88,8 +94,15 @@ a {
   box-shadow: 8px 8px 14px 0px rgba(185, 185, 185, 0.466);
 }
 
-.admin-panel-btn:hover {
-  box-shadow: 4px 4px 8px 0px rgba(185, 185, 185, 0.466);
+.admin-panel-btn--testResults {
+  width: 250px;
+  color: black;
+  background: none;
+}
+
+.admin-panel-btn--testResults:hover {
+  background-color: rgba(94, 217, 185, 1);
+  color: #ffff;
 }
 
 .search {
@@ -126,6 +139,54 @@ a {
   height: 30px;
 }
 
+.categories {
+  margin-top: 30px;
+}
+
+.categories__title {
+  font-size: 24px;
+}
+
+.categories__btn-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.categories__btn {
+  height: 50px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  transition: 0.5s all;
+}
+
+.categories__btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.categories__btn--active {
+  background-color: rgb(255, 174, 0);
+  color: white;
+}
+
+.categories__btn--active:hover {
+  background-color: rgb(255, 174, 0);
+}
+
+.resluts-btn-img {
+  height: 20px;
+  margin-right: 5px;
+}
+
 /* Страница урока */
 
 .go-back__link {
@@ -138,6 +199,7 @@ a {
 
 .go-back__link:hover {
   color: rgb(36, 184, 127);
+  gap: 10px;
 }
 
 .go-back__img {
@@ -188,17 +250,39 @@ a {
   font-size: 20px;
 }
 
-.admin-lessons {
-  margin-top: 40px;
+.admin-create-lesson-btns-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.admin-helps {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
+  gap: 30px;
+}
+
+.admin-helps__item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-helps__item p {
+  font-size: 18px;
+}
+
+.admin-lessons {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 450px 450px;
   gap: 20px;
 }
 
 .admin-lessons__item {
   width: 100%;
   min-height: 100px;
-  padding: 0 15px;
+  padding: 10px 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -218,7 +302,7 @@ a {
 
 .admin-lessons__item-name {
   font-weight: 600;
-  font-size: 28px;
+  font-size: 22px;
 }
 
 .admin-lessons__item-date {
@@ -265,6 +349,8 @@ a {
   display: flex;
   align-items: center;
   gap: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(214, 214, 214);
 }
 
 .add-lesson-title__img {
@@ -317,6 +403,7 @@ a {
   height: 50px;
   background: linear-gradient(90deg, rgba(48, 190, 129, 1) 0%, rgba(94, 217, 201, 1) 100%);
   border: 1px solid rgb(197, 197, 197);
+  border-radius: 30px;
   cursor: pointer;
   box-shadow: 4px 4px 8px 0px rgba(36, 36, 36, 0.302);
   color: white;
@@ -326,4 +413,91 @@ a {
 .add-lesson-save:hover {
   transform: scale(0.98);
   box-shadow: 2px 2px 6px 0px rgba(36, 36, 36, 0.302);
+}
+
+/* Добавить Категорию */
+.add-category-text {
+  margin-top: 30px;
+  font-size: 24px;
+}
+
+/* Удалить категорию */
+.categories__btn--admin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.categories__btn--admin:hover {
+  background-color: rgba(38, 189, 121, 0.688);
+}
+
+.categories-admin-btn-inner {
+  display: flex;
+  gap: 25px;
+  position: relative;
+  top: 2px;
+}
+
+.categories-admin-btn-img {
+  height: 20px;
+  transition: 0.2s all;
+}
+
+.categories-admin-btn-img:hover {
+  transform: scale(1.3);
+}
+
+/* Кастомизация Select'a */
+.select {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.select select {
+  font-size: 24px;
+  margin-bottom: 30px;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 15px 20px;
+  outline: 0;
+  border: 0px solid #000000;
+  border-radius: 0px;
+  background: #f7f7f7;
+  color: #343434;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select select:hover,
+.select select:focus {
+  color: #000000;
+  background: #f6f6f6;
+}
+.select select:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+.select_arrow {
+  position: absolute;
+  top: 23px;
+  right: 28px;
+  pointer-events: none;
+  border-style: solid;
+  border-width: 8px 5px 0px 5px;
+  border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+  border-top-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+  border-top-color: #cccccc;
 }

@@ -17,10 +17,40 @@
         <div class="go-back"><a class="go-back__link" href="../index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
         <h1 class="admin-panel-title"><img class="admin-panel-title__img" src="../images/businessman.png" alt="Администратор"> Добро пожаловать в <span>Админку</span>!</h1>
         <p class="admin-text">Здесь вы можете редактировать Ваши курсы</p>
-        <a href="../index.php?action=add"><button class="admin-create-lesson-btn">Создать новый урок</button></a>
+        <div class="admin-create-lesson-btns-wrapper">
+            <a href="../index.php?action=add"><button class="admin-create-lesson-btn">Создать новый урок</button></a>
+            <a href="../index.php?action=addcategory"><button class="admin-create-lesson-btn">Новый Раздел</button></a>
+        </div>
+        <!-- Поиск -->
         <div class="search">
             <input class="search-input" type="text" placeholder="Поиск + Enter">
             <button class="search__btn"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
+        </div>
+        <!-- Управление категориями -->
+        <div class="categories">
+            <div class="categories__title">Управление категориями:</div>
+            <div class="categories__btn-wrapper">
+                <?php if ($categories) foreach ($categories as $category) : ?>
+                <button class="categories__btn categories__btn--admin">
+                    <?= $category["category_name"]?>
+                    <div class="categories-admin-btn-inner">
+                        <a href="../index.php?action=editcategory&id=<?=$category["id"]?>"><img class="categories-admin-btn-img" src="../images/pencil-2.png" alt="Редактировать"></a>
+                        <a href="../index.php?action=deletecategory&id=<?=$category["id"]?>"><img class="categories-admin-btn-img" src="../images/trash-2.png" alt="Удалить"></a>
+                    </div>
+                </button>
+                <?php endforeach ?>
+            </div>
+        </div>
+        <!-- Список уроков -->
+        <div class="admin-helps">
+            <div class="admin-helps__item">
+                <img class="admin-btn-img" src="../images/pencil.png" alt="Редактировать">
+                <p>- Редактировать урок или название курса (категорию)</p>
+            </div>
+            <div class="admin-helps__item">
+                <img class="admin-btn-img" src="../images/trash.png" alt="Удалить">
+                <p>- Удалить урок или название курса</p>
+            </div>
         </div>
         <div class="admin-lessons">
         <?php foreach ($lessons as $lesson) : ?>

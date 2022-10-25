@@ -33,7 +33,7 @@ function lessons_get($link, $id_lesson) {
     return $lesson;
 }
 
-function lessons_new($link, $title, $date, $content, $video) {
+function lessons_new($link, $title, $date, $content, $video, $categoryId) {
     $title = trim($title);
     $content = trim($content);
     $video = trim($video);
@@ -42,11 +42,13 @@ function lessons_new($link, $title, $date, $content, $video) {
         return false;
     }
 
-    $t = "INSERT INTO lessons (title, date, content, video) VALUES ('%s', '%s', '%s', '%s')";
+    $t = "INSERT INTO lessons (title, date, content, video, category_id) VALUES ('%s', '%s', '%s', '%s', '%d')";
 
     $query = sprintf($t,
-    mysqli_real_escape_string($link, $title), mysqli_real_escape_string($link, $date), mysqli_real_escape_string($link, $content), mysqli_real_escape_string($link, $video));
-    echo $query;
+    mysqli_real_escape_string($link, $title), 
+    mysqli_real_escape_string($link, $date), 
+    mysqli_real_escape_string($link, $content), 
+    mysqli_real_escape_string($link, $video), (int)$categoryId);
     $result = mysqli_query($link, $query);
 
     if (!$result) {
@@ -56,20 +58,26 @@ function lessons_new($link, $title, $date, $content, $video) {
     return true;
 }
 
-function lessons_edit($link, $id, $title, $date, $content, $video) {
+function lessons_edit($link, $id, $title, $date, $content, $video, $categoryIndex) {
     $title = trim($title);
     $content = trim($content);
     $date = trim($date);
     $video = trim($video);
     $id = (int)$id;
+    $categoryIndex = (int)$categoryIndex;
 
     if ($title == '') {
         return false;
     }
 
-    $sql = "UPDATE lessons SET title='%s', content='%s', date='%s', video='%s' WHERE id='%d'";
+    $sql = "UPDATE lessons SET title='%s', content='%s', date='%s', video='%s', category_id='%d' WHERE id='%d'";
 
-    $query = sprintf($sql, mysqli_real_escape_string($link, $title), mysqli_real_escape_string($link, $content), mysqli_real_escape_string($link, $date), mysqli_real_escape_string($link, $video), $id);
+    $query = sprintf($sql, mysqli_real_escape_string($link, $title), 
+    mysqli_real_escape_string($link, $content), 
+    mysqli_real_escape_string($link, $date), 
+    mysqli_real_escape_string($link, $video),
+    $categoryIndex,
+    $id);
 
     $result = mysqli_query($link, $query);
 
@@ -95,6 +103,26 @@ function lessons_delete($link, $id) {
     }
 
     return mysqli_affected_rows($link);
+}
+
+function lessons_filtered_by_category($link, $categoryIndex) {
+    $query = sprintf("SELECT * FROM lessons WHERE category_id=%d", (int)$categoryIndex);
+    $result = mysqli_query($link, $query);
+
+    if (!$result) {
+        die(mysqli_error($link));
+    }
+
+    $lessonsFiltered = array();
+
+    $n = mysqli_num_rows($result);
+
+    for ($i = 0; $i < $n; $i++) {
+        $row = mysqli_fetch_assoc($result);
+        $lessonsFiltered[$i] = $row;
+    }
+
+    return $lessonsFiltered;
 }
 
 ?>
