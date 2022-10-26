@@ -11,6 +11,8 @@
     <!-- Мои стили -->
     <link href="../style.css" rel="stylesheet">
     <title>Все уроки</title>
+    <!-- bitrix24 api -->
+    <script src="https://api.bitrix24.com/api/v1/"></script>
 </head>
 <body>
     <div class="container">
@@ -26,9 +28,12 @@
             </a>
         </div>
         <!-- Поиск -->
-        <div class="search">
-            <input class="search-input" type="text" placeholder="Поиск + Enter">
-            <button class="search__btn"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
+        <div class="search__wrapper">
+            <div class="search">
+                <input class="search-input" type="text" placeholder="Поиск + Enter">
+                <button class="search__btn"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
+            </div>
+            <a href="index.php?action=auth"><button class="btn-register">Авторизоваться в приложении</button></a>
         </div>
         <!-- Выбор категории -->
         <div class="categories">
@@ -51,5 +56,14 @@
         </div>
     </div>
     <script src="../script.js"></script>
+    <!-- <script>
+        BX24.init(function() {
+            // Вывести приветствие
+            BX24.callMethod('user.current', {}, function(res) {
+                let greeting = document.querySelector(".greeting");
+                greeting.innerHTML = `Добрый день, ${res.data().NAME}!`;
+            });
+        });
+    </script> -->
 </body>
 </html>

@@ -20,6 +20,7 @@
         <div class="admin-create-lesson-btns-wrapper">
             <a href="../index.php?action=add"><button class="admin-create-lesson-btn">Создать новый урок</button></a>
             <a href="../index.php?action=addcategory"><button class="admin-create-lesson-btn">Новый Раздел</button></a>
+            <a href="../index.php?action=userslist"><button class="admin-create-lesson-btn admin-create-lesson-btn--bg">Спиок сотрудников</button></a>
         </div>
         <!-- Поиск -->
         <div class="search">

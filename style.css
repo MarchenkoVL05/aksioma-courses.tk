@@ -17,8 +17,55 @@ a {
   padding: 50px 15px;
 }
 
-/* Список всех уроков */
+/* Авторизация */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.auth-title {
+  font-size: 28px;
+}
 
+.auth-input {
+  width: 300px;
+  height: 50px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 100px;
+  font-size: 18px;
+  border: 1px solid rgb(243, 243, 243);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.auth-input:focus {
+  outline: none;
+}
+
+.auth-btn {
+  margin-top: 30px;
+  width: 200px;
+  height: 40px;
+  border: none;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  border-radius: 30px;
+  background: linear-gradient(28deg, rgba(38, 148, 97, 0.947) 0%, rgba(1, 217, 170, 0.844) 100%);
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.auth-btn:hover {
+  transform: scale(0.95);
+}
+
+/* Список всех уроков */
 .lessons {
   margin-top: 25px;
   display: grid;
@@ -105,6 +152,29 @@ a {
   color: #ffff;
 }
 
+.search__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.btn-register {
+  width: 350px;
+  height: 50px;
+  background-color: transparent;
+  color: #343434;
+  border: none;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+.btn-register:hover {
+  box-shadow: 2px 2px 2px 0px rgba(34, 60, 80, 0.2);
+}
+
 .search {
   position: relative;
 }
@@ -188,6 +258,10 @@ a {
 }
 
 /* Страница урока */
+
+.go-back--center {
+  justify-content: center;
+}
 
 .go-back__link {
   font-size: 24px;
@@ -338,6 +412,15 @@ a {
   color: #ffff;
   transform: scale(0.98);
   box-shadow: 2px 2px 4px 0px rgba(34, 60, 80, 0.2);
+}
+
+.admin-create-lesson-btn--bg {
+  background-color: #d1b900a6;
+  color: white;
+}
+
+.admin-create-lesson-btn--bg:hover {
+  background-color: #d19200b0;
 }
 
 /* Создать урок */
@@ -500,4 +583,28 @@ a {
 }
 .select select:disabled ~ .select_arrow {
   border-top-color: #cccccc;
+}
+
+/* Список сотрудников */
+.userslist-title {
+  margin-top: 25px;
+  font-weight: 600;
+}
+
+.userslist-grid {
+  margin-top: 45px;
+  font-size: 22px;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+}
+.grid-column {
+  padding: 5px 15px;
+  border: 1px solid rgb(244, 244, 244);
+}
+
+.grid-column--bold {
+  font-weight: 600;
 }

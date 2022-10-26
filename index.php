@@ -6,6 +6,8 @@
   require_once("models/lessons.php");
   // Модель категорий уроков
   require_once("models/categories.php");
+  // Модель пользователя
+  require_once("models/users.php");
 
   $link = db_connect();
 
@@ -16,8 +18,8 @@
     $action = "";
   }
 
-  // Добавить урок
   if ($action == "add") {
+    // Добавить урок
     if (!empty($_POST)) {
       lessons_new($link, $_POST["title"], $_POST["date"], $_POST["content"], $_POST["video"], $_POST["category_id"]);
       header("Location: index.php");
@@ -83,12 +85,23 @@
       $categories = categoies_all($link);
     }
     include("views/lessonsTemplate.php");
+  } else if ($action == "userslist") {
+    // Список сотрудников
+    $users = users_all($link);
+    include("views/adminUsersTemplate.php");
+  } else if ($action == "auth") {
+    // Создать пользователя
+    if (!empty($_POST)) {
+      users_new($link, $_POST["name"]);
+      header("Location: index.php");
+    }
+    include("views/authTemplate.php");
   } else {
     // Иначе - просто вернуть все на главную страницу
-    $lessons = lessons_all($link);
-    $categories = categoies_all($link);
-    include("views/lessonsTemplate.php");
-  }
+      $lessons = lessons_all($link);
+      $categories = categoies_all($link);
+      include("views/lessonsTemplate.php");
+    }
 
 ?>
 
