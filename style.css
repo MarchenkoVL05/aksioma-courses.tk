@@ -209,6 +209,13 @@ a {
   height: 30px;
 }
 
+.search__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
 .categories {
   margin-top: 30px;
 }
@@ -296,11 +303,29 @@ a {
   font-size: 26px;
 }
 
+.lesson-test-link {
+  display: block;
+  margin: 25px auto 0;
+  text-align: center;
+  width: 385px;
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 26px;
+  background: linear-gradient(
+    212deg,
+    rgba(48, 190, 124, 0.9472163865546218) 0%,
+    rgba(0, 144, 114, 0.8435749299719888) 100%
+  );
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.645);
+}
+
 .lesson-date {
-  margin-top: 15px;
+  margin-top: 25px;
   font-size: 22px;
   color: rgb(73, 73, 73);
   font-weight: 600;
+  text-align: center;
 }
 
 /* Админка */
@@ -327,6 +352,7 @@ a {
 .admin-create-lesson-btns-wrapper {
   display: flex;
   gap: 20px;
+  margin-top: 25px;
 }
 
 .admin-helps {
@@ -394,8 +420,6 @@ a {
 }
 
 .admin-create-lesson-btn {
-  margin-top: 25px;
-  margin-bottom: 25px;
   border: none;
   width: 250px;
   height: 50px;
@@ -421,6 +445,10 @@ a {
 
 .admin-create-lesson-btn--bg:hover {
   background-color: #d19200b0;
+}
+
+.admin-create-lesson-btn--test:hover {
+  background-color: rgba(18, 112, 166, 0.707);
 }
 
 /* Создать урок */
@@ -607,4 +635,85 @@ a {
 
 .grid-column--bold {
   font-weight: 600;
+}
+
+/* Создание теста */
+.test-input-title {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.test-input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgb(227, 227, 227);
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 0 15px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 10px;
+}
+
+.test-input:focus {
+  outline: none;
+}
+
+#select1 {
+  margin-bottom: 0;
+}
+
+.add-test-save {
+  display: block;
+}
+
+.test-input--mb {
+  margin-bottom: 15px;
+}
+
+.btn-add-answer {
+  display: flex;
+  width: 300px;
+  height: 30px;
+  font-size: 22px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-add-answer--right {
+  margin-bottom: 25px;
+  width: 400px;
+}
+
+.question-title {
+  margin-top: 25px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.question-input-wrapper {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.question-answer {
+  font-size: 22px;
+}
+
+.question-input {
+  transform: scale(1.5);
+}
+
+.question-title--mb {
+  margin-bottom: 15px;
+}
+
+.add-test-submit {
+  display: block;
+  margin-top: 20px;
+  box-shadow: 4px 4px 8px 0px rgb(0 0 0 / 38%);
 }

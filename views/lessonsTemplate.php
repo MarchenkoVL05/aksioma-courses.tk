@@ -20,7 +20,7 @@
         <!-- Кнопки -->
         <div class="admin-panel-buttons-wrapper">
             <a href="../admin/index.php"><button class="admin-panel-btn">Панель администратора</button></a>
-            <a href="#"><button class="admin-panel-btn admin-panel-btn--testResults">Список тестов</button></a>
+            <a href="#"><button class="admin-panel-btn admin-panel-btn--testResults">Назначенные уроки</button></a>
             <a href="#">
                 <button class="admin-panel-btn admin-panel-btn--testResults">
                     <img class="resluts-btn-img" src="../images/results.png" alt="Результаты"> Мои результаты

@@ -8,7 +8,10 @@
   require_once("models/categories.php");
   // Модель пользователя
   require_once("models/users.php");
+  // Модель теста
+  require_once("models/test.php");
 
+  // Дескриптор соединения
   $link = db_connect();
 
   // Получаем параметр запроса (На странице админки)
@@ -18,7 +21,25 @@
     $action = "";
   }
 
-  if ($action == "add") {
+  if ($action == "test") {
+    $lesson_id = $_GET['id'];
+    $lessons = lessons_all($link);
+    $questions = test_all($link);
+    include("views/testTemplate.php");
+  }else if ($action == "addtest") {
+    // Добавить вопрос
+    $categories = categoies_all($link);
+    $lessons = lessons_all($link);
+    if (!empty($_POST)) {
+      test_new($link, $_POST["q-name"], $_POST["q-lesson_id"], $_POST["q-lesson_type"], 
+      $_POST["answer1"], $_POST["answer2"], $_POST["answer3"], $_POST["answer4"], $_POST["answer5"],
+      $_POST["answer6"], $_POST["answer7"], $_POST["answer8"], $_POST["answer9"], $_POST["answer10"],
+      $_POST["q-right1"], $_POST["q-right2"], $_POST["q-right3"], $_POST["q-right4"], $_POST["q-right5"], 
+      $_POST["q-right6"], $_POST["q-right7"], $_POST["q-right8"], $_POST["q-right9"], $_POST["q-right10"]);
+      header("Location: index.php");
+    }
+    include("views/createTestTemplate.php");
+  } else if ($action == "add") {
     // Добавить урок
     if (!empty($_POST)) {
       lessons_new($link, $_POST["title"], $_POST["date"], $_POST["content"], $_POST["video"], $_POST["category_id"]);
@@ -69,7 +90,7 @@
 
     $category = categories_get($link, $id);
     include("views/createCategoryTemplate.php");
-    // Редактировать категорию
+    // Удалить категорию
   } else if ($action == "deletecategory") {
       $id = $_GET["id"];
       categories_delete($link, $id);

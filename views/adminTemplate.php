@@ -19,13 +19,16 @@
         <p class="admin-text">Здесь вы можете редактировать Ваши курсы</p>
         <div class="admin-create-lesson-btns-wrapper">
             <a href="../index.php?action=add"><button class="admin-create-lesson-btn">Создать новый урок</button></a>
-            <a href="../index.php?action=addcategory"><button class="admin-create-lesson-btn">Новый Раздел</button></a>
+            <a href="../index.php?action=addcategory"><button class="admin-create-lesson-btn">Новый раздел</button></a>
             <a href="../index.php?action=userslist"><button class="admin-create-lesson-btn admin-create-lesson-btn--bg">Спиок сотрудников</button></a>
         </div>
         <!-- Поиск -->
         <div class="search">
-            <input class="search-input" type="text" placeholder="Поиск + Enter">
-            <button class="search__btn"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
+            <div class="search__inner">
+                <input class="search-input" type="text" placeholder="Поиск + Enter">
+                <button class="search__btn search__btn--admin"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
+                <a href="../index.php?action=addtest"><button class="admin-create-lesson-btn admin-create-lesson-btn--test">Создать вопрос</button></a>
+            </div>
         </div>
         <!-- Управление категориями -->
         <div class="categories">
