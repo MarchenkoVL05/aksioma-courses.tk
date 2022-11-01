@@ -10,6 +10,8 @@
   require_once("models/test.php");
   // Модель юзера
   require_once("models/users.php");
+  // Модель результатов тестирования
+  require_once("models/results.php");
 
   // Дескриптор соединения
   $link = db_connect();
@@ -132,8 +134,14 @@
     include("views/authSuccess.php");
   } else if ($action == "userslist") {
     // Список сотрудников
-    $users = users_all($link);
+    $results = results_all($link);
+    $lessons = lessons_all($link);
     include("views/adminUsersTemplate.php");
+  } else if ($action == 'checktext') {
+    // Страница текстового ответа ученика на тест 
+    $results = results_all($link);
+    $resultID = $_GET['resultID'];
+    include("views/textResultTemplate.php");
   } else {
     // Иначе - просто вернуть все на главную страницу
       $lessons = lessons_all($link);

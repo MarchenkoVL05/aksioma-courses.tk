@@ -20,7 +20,7 @@
         <div class="greeting"></div>
         <!-- Кнопки -->
         <div class="admin-panel-buttons-wrapper">
-            <a href="../admin/index.php"><button class="admin-panel-btn">Панель администратора</button></a>
+            <a id="admin-panel-link" href="../admin/index.php"><button class="admin-panel-btn">Панель администратора</button></a>
             <a href="#"><button class="admin-panel-btn admin-panel-btn--testResults">Назначенные уроки</button></a>
             <a href="#">
                 <button class="admin-panel-btn admin-panel-btn--testResults">
@@ -50,7 +50,7 @@
         <div class="lessons">
             <?php foreach ($lessons as $lesson) : ?>
             <div class="lessons__item">
-                <div class="lessons__item-name"><a href="lesson.php?id=<?=$lesson["id"]?>"><?= $lesson["title"]?></a></div>
+                <div class="lessons__item-name"><a class="lessons__item-name-link" href="lesson.php?id=<?=$lesson["id"]?>"><?= $lesson["title"]?></a></div>
                 <div class="lessons__item-date">Опубликовано: <?= $lesson["date"]?></div>
             </div>
             <?php endforeach?>
@@ -67,6 +67,11 @@
                 
                 let userNameLink = document.querySelector(".username-link");
                 userNameLink.href = `index.php?action=auth&username=${username}`;
+
+                let lessonLink = document.querySelectorAll('.lessons__item-name-link');
+                lessonLink.forEach((link) => {
+                    link.href += `&username=${username}`;
+                });
             });
         });
     </script>

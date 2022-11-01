@@ -20,7 +20,7 @@
         <?php foreach ($questions as $question) : ?>
             <div class="admin-lessons__item">
                 <div class="admin-lessons__item-descr">
-                    <div class="admin-lessons__item-name"><?= $question["q_name"]?></div>
+                    <div class="admin-lessons__item-name admin-lessons__item-name--test-delete"><?= $question["q_name"]?></div>
                 </div>
                 <div class="admin-btns-wrapper">
                     <div class="admin-lessons__edit-btn"><a href="../index.php?action=deletetest&q_id=<?=$question["q_id"]?>"><img class="admin-btn-img" src="../images/trash.png" alt="Удалить"></a></div>

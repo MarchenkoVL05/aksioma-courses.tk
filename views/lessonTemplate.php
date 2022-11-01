@@ -29,6 +29,8 @@
                 // Обрезаем кавычки
                 $resultLink = substr($src, 10, -6);
             }
+
+            $username = $_GET['username'];
         ?>
         <div class="go-back"><a class="go-back__link" href="../index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
         <h1 class="lesson-title"><?= $lesson["title"]?></h1>
@@ -42,7 +44,7 @@
             </div>
         <?php endif?>
         <div class="lesson-content"><?= $lesson["content"]?></div>
-        <a class="lesson-test-link" href="../index.php?action=test&id=<?=$lesson["id"]?>">Перейти к тестирование</a>
+        <a class="lesson-test-link" href="../index.php?action=test&id=<?=$lesson["id"]?>&username=<?=$username?>">Перейти к тестирование</a>
         <div class="lesson-date">Опубликовано: <?= $lesson["date"]?></div>
     </div>
 </body>

@@ -15,18 +15,24 @@
 <body>
     <div class="container">
         <div class="go-back"><a class="go-back__link" href="/admin/index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
-        <h1 class="userslist-title">Список всех Ваших сотрудников</h1>
+        <h1 class="userslist-title">Список всех Ваших учеников</h1>
         <div class="userslist-grid">
             <div class="grid-row">
                 <div class="grid-column grid-column--bold">Имя</div>
                 <div class="grid-column grid-column--bold">Тест</div>
                 <div class="grid-column grid-column--bold">Результат</div>
+                <div class="grid-column grid-column--bold grid-column--fz-small">Требуют проверки</div>
             </div>
-            <?php foreach ($users as $user) :?>
+            <?php foreach ($results as $result) :?>
             <div class="grid-row">
-                <div class="grid-column"><?=$user['username']?></div>
-                <div class="grid-column"><?=$user['username']?></div>
-                <div class="grid-column"><?=$user['username']?></div>
+                <div class="grid-column"><?=$result['username']?></div>
+                <?php foreach ($lessons as $lesson) : ?>
+                    <?php if ($lesson["id"] == $result['id_of_lesson']) : ?>
+                        <div class="grid-column"><?=$lesson["title"]?></div>
+                    <?php endif?>
+                <?php endforeach?>
+                <div class="grid-column"><?=$result['test_results']?>%</div>
+                <div class="grid-column"><a class="results-text-link" href="index.php?action=checktext&resultID=<?php echo $result['result_id']?>">ссылка</a></div>
             </div>
             <?php endforeach?>
         </div>

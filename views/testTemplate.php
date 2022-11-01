@@ -15,6 +15,7 @@
     <title>Создание теста</title>
 </head>
 <body>
+    <?php $username = $_GET['username']; ?>
     <div class="container">
         <div class="go-back"><a class="go-back__link" href="javascript:window.history.back()"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
         <h1 class="add-lesson-title"><img class="add-lesson-title__img" src="../images/exam.png" alt="Создать урок"> Тестирование</h1>
@@ -24,10 +25,11 @@
                 <?php if ($question["q_lesson"] == $lesson_id) : ?>
                     <!--  -->
                     <input type="hidden" value="<?php echo $question["q_lesson"]?>" name="id_of_lesson">
+                    <input type="hidden" value="<?php echo $username?>" name="username">
                     <!--  -->
                     <?php if ($question["q_type"] == 'text') : ?>
                         <div class="question-title question-title--mb"><?php echo $question["q_name"]?></div>
-                        <textarea class="add-lesson-textarea" name="<?php echo $question["q_name"]?>"></textarea>
+                        <textarea class="add-lesson-textarea" name="<?php echo $question["q_name"]?>" required></textarea>
                     <?php elseif ($question["q_type"] !== 'text') : ?>
                         <!--  -->
                         <div class="question-title"><?php echo $question["q_name"]?></div>

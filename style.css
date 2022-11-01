@@ -410,6 +410,10 @@ a {
   font-size: 22px;
 }
 
+.admin-lessons__item-name--test-delete {
+  padding: 0 15px;
+}
+
 .admin-lessons__item-date {
   margin-top: 5px;
 }
@@ -631,15 +635,28 @@ a {
 
 .grid-row {
   display: grid;
-  grid-template-columns: 300px 300px 300px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .grid-column {
+  display: flex;
+  align-items: center;
   padding: 5px 15px;
   border: 1px solid rgb(244, 244, 244);
+  min-height: 60px;
+}
+
+.grid-column--center {
+  justify-content: center;
 }
 
 .grid-column--bold {
   font-weight: 600;
+  font-size: 18px;
+  font-size: 25px;
+}
+
+.grid-column--fz-small {
+  font-size: 18px;
 }
 
 /* Создание теста */
@@ -721,4 +738,93 @@ a {
   display: block;
   margin-top: 20px;
   box-shadow: 4px 4px 8px 0px rgb(0 0 0 / 38%);
+}
+
+/* Страница с результатами */
+.results-title {
+  margin-top: 40px;
+  font-size: 34px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.results-title img {
+  height: 50px;
+}
+
+.results-test {
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.results-test__item {
+  font-size: 26px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 100px;
+}
+
+.results-test__item-score {
+  font-weight: 600;
+}
+
+.results-test__item-rate {
+  font-weight: 600;
+}
+
+.results-test__item-rate--2 {
+  color: rgb(208, 0, 0);
+}
+.results-test__item-rate--3 {
+  color: rgb(231, 147, 3);
+}
+.results-test__item-rate--4 {
+  color: #e6d200;
+}
+.results-test__item-rate--5 {
+  color: rgb(0, 192, 0);
+}
+
+.results-test__item-textAnswers {
+  font-weight: 600;
+}
+
+.results-close-btn {
+  width: 300px;
+  height: 60px;
+  font-size: 24px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px 0px rgb(0 0 0 / 28%);
+  font-weight: 600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.results-close-btn:hover {
+  transform: scale(0.95);
+}
+
+.results-text-link {
+  text-decoration: underline;
+  color: #25a76f;
+}
+
+.text-result {
+  margin-top: 30px;
+  font-size: 26px;
+}
+
+.text-result p {
+  margin-top: 30px;
+  font-size: 32px;
+  font-weight: 600;
 }
