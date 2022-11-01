@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="go-back"><a class="go-back__link" href="../index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
+        <div class="go-back"><a class="go-back__link" href="/admin/index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
         <h1 class="userslist-title">Список всех Ваших сотрудников</h1>
         <div class="userslist-grid">
             <div class="grid-row">
@@ -24,9 +24,9 @@
             </div>
             <?php foreach ($users as $user) :?>
             <div class="grid-row">
-                <div class="grid-column"><?=$user['name']?></div>
-                <div class="grid-column"><?=$user['name']?></div>
-                <div class="grid-column"><?=$user['name']?></div>
+                <div class="grid-column"><?=$user['username']?></div>
+                <div class="grid-column"><?=$user['username']?></div>
+                <div class="grid-column"><?=$user['username']?></div>
             </div>
             <?php endforeach?>
         </div>

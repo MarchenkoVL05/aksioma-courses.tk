@@ -18,10 +18,13 @@
     <div class="container">
         <div class="go-back"><a class="go-back__link" href="javascript:window.history.back()"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
         <h1 class="add-lesson-title"><img class="add-lesson-title__img" src="../images/exam.png" alt="Создать урок"> Тестирование</h1>
-        <form action="" method="POST">
+        <form action="checkAnswers.php" method="POST">
             <?php foreach ($questions as $question) : ?>
                 <!-- Если поле с id урока в таблице test равно id из GET параметра -->
                 <?php if ($question["q_lesson"] == $lesson_id) : ?>
+                    <!--  -->
+                    <input type="hidden" value="<?php echo $question["q_lesson"]?>" name="id_of_lesson">
+                    <!--  -->
                     <?php if ($question["q_type"] == 'text') : ?>
                         <div class="question-title question-title--mb"><?php echo $question["q_name"]?></div>
                         <textarea class="add-lesson-textarea" name="<?php echo $question["q_name"]?>"></textarea>
@@ -29,58 +32,58 @@
                         <!--  -->
                         <div class="question-title"><?php echo $question["q_name"]?></div>
                         <div class="question-input-wrapper">
-                            <input class="question-input" value="<?php echo $question["q_answer1"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                            <input class="question-input" value="<?php echo $question["q_answer1"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                             <div class="question-answer"><?php echo $question["q_answer1"]?></div>
                         </div>
                         <div class="question-input-wrapper">
-                            <input class="question-input" value="<?php echo $question["q_answer2"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                            <input class="question-input" value="<?php echo $question["q_answer2"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                             <div class="question-answer"><?php echo $question["q_answer2"]?></div>
                         </div>
                         <?php if ($question["q_answer3"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer3"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer3"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer3"]?></div>
                             </div>
                         <?php endif?>
                         <?php if ($question["q_answer4"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer4"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer4"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer4"]?></div>
                             </div>
                         <?php endif?>
                         <?php if ($question["q_answer5"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer5"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer5"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer5"]?></div>
                             </div>
                         <?php endif?>
                         <?php if ($question["q_answer6"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer6"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer6"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer6"]?></div>
                             </div>
                         <?php endif?>
                         <?php if ($question["q_answer7"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer7"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer7"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer7"]?></div>
                             </div>
                         <?php endif?>
                         <?php if ($question["q_answer8"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer8"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer8"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer8"]?></div>
                             </div>
                         <?php endif?>
                         <?php if ($question["q_answer9"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer9"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer9"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer9"]?></div>
                             </div>
                         <?php endif?>
                         <?php if ($question["q_answer10"]) : ?>
                             <div class="question-input-wrapper">
-                                <input class="question-input" value="<?php echo $question["q_answer10"]?>" name="<?php echo $question["q_name"]?>" type="<?php echo $question['q_type']?>">
+                                <input class="question-input" value="<?php echo $question["q_answer10"]?>" name="<?php echo $question["q_name"]?>[]" type="<?php echo $question['q_type']?>">
                                 <div class="question-answer"><?php echo $question["q_answer10"]?></div>
                             </div>
                         <?php endif?>

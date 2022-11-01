@@ -1,5 +1,24 @@
 <?php
 
+function users_new($link, $username) {
+    $username = trim($username);
+
+    if ($username == '') {
+        return false;
+    }
+
+    $t = "INSERT INTO users (username) VALUES ('%s')";
+
+    $query = sprintf($t, mysqli_real_escape_string($link, $username));
+    $result = mysqli_query($link, $query);
+
+    if (!$result) {
+        die(mysqli_error($link));
+    }
+
+    return true;
+}
+
 function users_all($link) {
     $query = "SELECT * FROM users ORDER BY id DESC";
     $result = mysqli_query($link, $query);
@@ -18,25 +37,6 @@ function users_all($link) {
     }
 
     return $users;
-}
-
-function users_new($link, $name) {
-    $name = trim($name);
-
-    if ($name == '') {
-        return false;
-    }
-
-    $t = "INSERT INTO users (name) VALUES ('%s')";
-
-    $query = sprintf($t, mysqli_real_escape_string($link, $name));
-    $result = mysqli_query($link, $query);
-
-    if (!$result) {
-        die(mysqli_error($link));
-    }
-
-    return true;
 }
 
 ?>

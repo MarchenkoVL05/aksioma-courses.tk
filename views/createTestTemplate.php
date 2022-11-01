@@ -59,7 +59,7 @@
             <!-- Правильный ответ -->
             <div class="test-input-title test-input-title--hide">Правильный ответ</div>
             <div class="inputs-answers-wrapper--right">
-                <input name="q-right1" class="test-input test-input--mb test-input-required" type="text" placeholder="Введите число" required></input>
+                <input name="q-right1" class="test-input test-input--mb test-input-required" type="text" placeholder="Скопируйте вариант" required></input>
             </div>
             <button class="btn-add-answer btn-add-answer--right">Добавить правильный ответ &#8595;</button>
             <!-- Отправить -->
@@ -122,7 +122,7 @@
                 let input = document.createElement("input");
                 input.name = `q-right${rightAnswerNumber++}`;
                 input.className = "test-input test-input--mb";
-                input.placeholder = "Введите число";
+                input.placeholder = "Скопируйте вариант";
                 inputRightAnswersWrapper.append(input);
             }
         });

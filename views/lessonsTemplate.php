@@ -17,6 +17,7 @@
 <body>
     <div class="container">
         <h1 class="lessons-title"><img class="lessons-title__img" src="./images/mortarboard.png" alt="Шапочка"> Список всех уроков</h1>
+        <div class="greeting"></div>
         <!-- Кнопки -->
         <div class="admin-panel-buttons-wrapper">
             <a href="../admin/index.php"><button class="admin-panel-btn">Панель администратора</button></a>
@@ -33,7 +34,7 @@
                 <input class="search-input" type="text" placeholder="Поиск + Enter">
                 <button class="search__btn"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
             </div>
-            <a href="index.php?action=auth"><button class="btn-register">Авторизоваться в приложении</button></a>
+            <a class="username-link" href="index.php?action=auth&username="><button class="btn-register">Авторизоваться в приложении</button></a>
         </div>
         <!-- Выбор категории -->
         <div class="categories">
@@ -56,14 +57,18 @@
         </div>
     </div>
     <script src="../script.js"></script>
-    <!-- <script>
+    <script>
         BX24.init(function() {
             // Вывести приветствие
             BX24.callMethod('user.current', {}, function(res) {
                 let greeting = document.querySelector(".greeting");
-                greeting.innerHTML = `Добрый день, ${res.data().NAME}!`;
+                let username = res.data().NAME + ' ' + res.data().LAST_NAME;
+                greeting.innerHTML = `Добрый день, ${username}!`;
+                
+                let userNameLink = document.querySelector(".username-link");
+                userNameLink.href = `index.php?action=auth&username=${username}`;
             });
         });
-    </script> -->
+    </script>
 </body>
 </html>

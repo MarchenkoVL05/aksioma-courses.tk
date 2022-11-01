@@ -6,10 +6,10 @@
   require_once("models/lessons.php");
   // Модель категорий уроков
   require_once("models/categories.php");
-  // Модель пользователя
-  require_once("models/users.php");
   // Модель теста
   require_once("models/test.php");
+  // Модель юзера
+  require_once("models/users.php");
 
   // Дескриптор соединения
   $link = db_connect();
@@ -26,7 +26,7 @@
     $lessons = lessons_all($link);
     $questions = test_all($link);
     include("views/testTemplate.php");
-  }else if ($action == "addtest") {
+  } else if ($action == "addtest") {
     // Добавить вопрос
     $categories = categoies_all($link);
     $lessons = lessons_all($link);
@@ -36,21 +36,32 @@
       $_POST["answer6"], $_POST["answer7"], $_POST["answer8"], $_POST["answer9"], $_POST["answer10"],
       $_POST["q-right1"], $_POST["q-right2"], $_POST["q-right3"], $_POST["q-right4"], $_POST["q-right5"], 
       $_POST["q-right6"], $_POST["q-right7"], $_POST["q-right8"], $_POST["q-right9"], $_POST["q-right10"]);
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
     }
     include("views/createTestTemplate.php");
+  } else if ($action == "deletetest") {
+    // Удалить вопрос(ы)
+    $lessons = lessons_all($link);
+    $questions = test_all($link);
+    if (!empty($_GET["q_id"])) {
+      $testId = $_GET["q_id"];
+      test_delete($link, $testId);
+      // header("Location: index.php");
+      header("Refresh: 0, url=index.php?action=deletetest");
+    }
+    include("views/deleteTestTemplate.php");
   } else if ($action == "add") {
     // Добавить урок
     if (!empty($_POST)) {
       lessons_new($link, $_POST["title"], $_POST["date"], $_POST["content"], $_POST["video"], $_POST["category_id"]);
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
     }
     $categories = categoies_all($link);
     include("views/createLessonTemplate.php");
     // Редактировать урок
   } else if ($action == "edit") {
     if (!isset($_GET["id"])) {
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
     }
 
     $id = (int)$_GET["id"];
@@ -58,7 +69,7 @@
     $categories = categoies_all($link);
     if (!empty($_POST) && $id > 0) {
       lessons_edit($link, $id, $_POST["title"], $_POST["date"], $_POST["content"], $_POST["video"], $_POST["category_id"]);
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
     }
 
     $lesson = lessons_get($link, $id);
@@ -67,25 +78,25 @@
   } else if ($action == "delete") {
     $id = $_GET["id"];
     $lesson = lessons_delete($link, $id);
-    header("Location: index.php");
+    header("Refresh: 0, url=/admin/index.php");
     // Добавить категорию
   } else if ($action == "addcategory") {
     if (!empty($_POST)) {
       category_new($link, $_POST["category_name"]);
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
     }
     include("views/createCategoryTemplate.php");
     // Редактировать категорию
   } else if ($action == "editcategory") {
     if (!isset($_GET["id"])) {
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
     }
 
     $id = (int)$_GET["id"];
 
     if (!empty($_POST) && $id > 0) {
       categories_edit($link, $id, $_POST["category_name"]);
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
     }
 
     $category = categories_get($link, $id);
@@ -94,7 +105,7 @@
   } else if ($action == "deletecategory") {
       $id = $_GET["id"];
       categories_delete($link, $id);
-      header("Location: index.php");
+      header("Refresh: 0, url=/admin/index.php");
       // Фильтр по категориям
   } else if ($action == "filter") {
     $id = $_GET["id"];
@@ -106,17 +117,23 @@
       $categories = categoies_all($link);
     }
     include("views/lessonsTemplate.php");
+  } else if ($action == 'auth') {
+    // Авторизоваться в приложении
+    $username = $_GET['username'];
+    $users = users_all($link);
+    foreach($users as $userCurrent) {
+      if ($userCurrent['username'] == $_GET['username']) {
+        header('Location: index.php');
+        return;
+      } else if ($userCurrent['username'] != $_GET['username']) {
+        users_new($link, $_GET['username']);
+      }
+    }
+    include("views/authSuccess.php");
   } else if ($action == "userslist") {
     // Список сотрудников
     $users = users_all($link);
     include("views/adminUsersTemplate.php");
-  } else if ($action == "auth") {
-    // Создать пользователя
-    if (!empty($_POST)) {
-      users_new($link, $_POST["name"]);
-      header("Location: index.php");
-    }
-    include("views/authTemplate.php");
   } else {
     // Иначе - просто вернуть все на главную страницу
       $lessons = lessons_all($link);
