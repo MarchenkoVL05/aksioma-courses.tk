@@ -636,7 +636,35 @@ a {
 .grid-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  position: relative;
 }
+
+.grid-row:hover .delete-result {
+  visibility: visible;
+  opacity: 1;
+}
+
+.delete-result {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s all;
+  position: absolute;
+  left: -55px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+}
+
+.delete-result-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-result-img {
+  height: 35px;
+}
+
 .grid-column {
   display: flex;
   align-items: center;
@@ -826,5 +854,33 @@ a {
 .text-result p {
   margin-top: 30px;
   font-size: 32px;
+  font-weight: 600;
+}
+
+/* Мои результаты */
+.my-r {
+  margin-top: 50px;
+}
+
+.my-r__head-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.my-r__head {
+  font-size: 26px;
+}
+
+.my-r__head span {
+  color: #25a76f;
+}
+
+.my-r__head b {
   font-weight: 600;
 }

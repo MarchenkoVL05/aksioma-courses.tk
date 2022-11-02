@@ -133,7 +133,7 @@
     }
     include("views/authSuccess.php");
   } else if ($action == "userslist") {
-    // Список сотрудников
+    // Список тестов учеников в админке
     $results = results_all($link);
     $lessons = lessons_all($link);
     include("views/adminUsersTemplate.php");
@@ -142,6 +142,17 @@
     $results = results_all($link);
     $resultID = $_GET['resultID'];
     include("views/textResultTemplate.php");
+  } else if ($action == 'deleteresult') {
+    // Удалить результат ученика
+    $resultID = $_GET["result_id"];
+    results_delete($link, $resultID);
+    header("Refresh: 0, url=index.php?action=userslist");
+  } else if ($action == 'myresults') {
+    // Страница Мои результаты
+    $resultUsername = $_GET['username'];
+    $myResults = results_get($link, $resultUsername);
+    $lessons = lessons_all($link);
+    include("views/myResultsTemplate.php");
   } else {
     // Иначе - просто вернуть все на главную страницу
       $lessons = lessons_all($link);

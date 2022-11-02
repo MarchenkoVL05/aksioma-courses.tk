@@ -33,6 +33,9 @@
                 <?php endforeach?>
                 <div class="grid-column"><?=$result['test_results']?>%</div>
                 <div class="grid-column"><a class="results-text-link" href="index.php?action=checktext&resultID=<?php echo $result['result_id']?>">ссылка</a></div>
+                <div class="delete-result">
+                    <button class="delete-result-btn" onclick="location.href='index.php?action=deleteresult&result_id=<?=$result['result_id']?>'"><img class="delete-result-img" src="../images/delete.png" alt="Удалить результат"></button>
+                </div>
             </div>
             <?php endforeach?>
         </div>

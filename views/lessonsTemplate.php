@@ -17,12 +17,12 @@
 <body>
     <div class="container">
         <h1 class="lessons-title"><img class="lessons-title__img" src="./images/mortarboard.png" alt="Шапочка"> Список всех уроков</h1>
-        <div class="greeting"></div>
+        <div class="greeting">Добрый день</div>
         <!-- Кнопки -->
         <div class="admin-panel-buttons-wrapper">
             <a id="admin-panel-link" href="../admin/index.php"><button class="admin-panel-btn">Панель администратора</button></a>
             <a href="#"><button class="admin-panel-btn admin-panel-btn--testResults">Назначенные уроки</button></a>
-            <a href="#">
+            <a id="my-results-link" href="index.php?action=myresults">
                 <button class="admin-panel-btn admin-panel-btn--testResults">
                     <img class="resluts-btn-img" src="../images/results.png" alt="Результаты"> Мои результаты
                 </button>
@@ -63,7 +63,7 @@
             BX24.callMethod('user.current', {}, function(res) {
                 let greeting = document.querySelector(".greeting");
                 let username = res.data().NAME + ' ' + res.data().LAST_NAME;
-                greeting.innerHTML = `Добрый день, ${username}!`;
+                greeting.innerHTML += `, ${username}!`;
                 
                 let userNameLink = document.querySelector(".username-link");
                 userNameLink.href = `index.php?action=auth&username=${username}`;
@@ -72,6 +72,9 @@
                 lessonLink.forEach((link) => {
                     link.href += `&username=${username}`;
                 });
+
+                let myResultsLink = document.getElementById("my-results-link");
+                myResultsLink.href += `&username=${username}`;
             });
         });
     </script>

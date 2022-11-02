@@ -76,7 +76,7 @@
             $resultUserAnswerTextCount++;
             // Сохраняем название вопроса и его текстовый ответ + обратно заменяем "_" на пробел
             $resultQuestions[$i]['q_name'] = str_replace('_', ' ', $resultQuestions[$i]['q_name']);
-            $resultUserAnswerText = $resultUserAnswerText . '<br>' . $resultQuestions[$i]['q_name'] . ':' . '<br>' . $userAnswerText;
+            $resultUserAnswerText = $resultUserAnswerText . '<br>' . $resultQuestions[$i]['q_name'] . '<br>' . $userAnswerText;
         }
 
         // Находим пересечения, т.е. правильные ответы

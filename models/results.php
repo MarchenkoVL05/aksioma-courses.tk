@@ -39,4 +39,40 @@ function results_all($link) {
 
     return $testResults;
 }
+
+function results_get($link, $username) {
+    $query = sprintf("SELECT * FROM results WHERE username='%s'", $username);
+    $result = mysqli_query($link, $query);
+
+    if (!$result) {
+        die(mysqli_error($link));
+    }
+
+    $numRows = mysqli_num_rows($result);
+    $myResults = array();
+
+    for ($i = 0; $i < $numRows; $i++) {
+        $row = mysqli_fetch_assoc($result);
+        $myResults[] = $row;
+    }
+
+    return $myResults;
+}
+
+function results_delete($link, $id) {
+    $id = (int)$id;
+
+    if ($id == 0) {
+        return false;
+    }
+
+    $query = sprintf("DELETE FROM results WHERE result_id='%d'", $id);
+    $result = mysqli_query($link, $query);
+
+    if (!$result) {
+        die(mysqli_error($link));
+    }
+
+    return mysqli_affected_rows($link);
+}
 ?>
