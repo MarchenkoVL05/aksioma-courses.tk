@@ -22,6 +22,37 @@ a {
   font-size: 18px;
 }
 
+.page-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.page-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 22px;
+  background-color: #ffff;
+  border-radius: 100%;
+  border: 1px solid rgb(246, 246, 246);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  transition: 0.3s all;
+  cursor: pointer;
+}
+.page-btn:hover {
+  background-color: rgba(48, 190, 133, 1);
+  border: 1px solid rgba(48, 190, 133, 1);
+  color: #ffff;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.465);
+}
+.page-btn--active {
+  background-color: rgba(48, 190, 133, 1);
+  border: 1px solid rgba(48, 190, 133, 1);
+  color: #ffff;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.465);
+}
+
 /* Авторизация */
 .auth-form {
   display: flex;
@@ -883,4 +914,40 @@ a {
 
 .my-r__head b {
   font-weight: 600;
+}
+
+/*  */
+.delete-results-img {
+  height: 50px;
+}
+
+.userslist-help {
+  margin-top: 30px;
+}
+
+.userslist-help-delete {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.delete-results {
+  font-size: 20px;
+}
+
+.check-text-results {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.check-text-results__descr {
+  text-decoration: underline;
+  color: #25a76f;
+  font-size: 22px;
+}
+
+.check-text-results__meaning {
+  font-size: 20px;
 }

@@ -15,7 +15,17 @@
 <body>
     <div class="container">
         <div class="go-back"><a class="go-back__link" href="/admin/index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
-        <h1 class="userslist-title">Список всех Ваших учеников</h1>
+        <h1 class="userslist-title">Результаты Ваших учеников</h1>
+        <div class="userslist-help">
+            <div class="userslist-help-delete">
+                <img class="delete-results-img" src="../images/delete.png" alt="удалить результат">
+                <p class="delete-results">- Удалить результат тестирования ученика</p>
+            </div>
+            <div class="check-text-results">
+                <p class="check-text-results__descr">ссылка</p>
+                <p class="check-text-results__meaning">- Просмотреть ответ на вопрос, требующий текстового ответа</p>
+            </div>
+        </div>
         <div class="userslist-grid">
             <div class="grid-row">
                 <div class="grid-column grid-column--bold">Имя</div>

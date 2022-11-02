@@ -1,3 +1,12 @@
+<?php
+    // Пагинация
+
+    $page = $_GET["page"];
+    // Количество выводимых уроков на странице
+    $count = 6;
+    // Вычисляем количество страниц
+    $page_count = floor(count($lessons) / $count);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -48,12 +57,30 @@
         </div>
         <!-- Список уроков -->
         <div class="lessons">
-            <?php foreach ($lessons as $lesson) : ?>
-            <div class="lessons__item">
-                <div class="lessons__item-name"><a class="lessons__item-name-link" href="lesson.php?id=<?=$lesson["id"]?>"><?= $lesson["title"]?></a></div>
-                <div class="lessons__item-date">Опубликовано: <?= $lesson["date"]?></div>
-            </div>
-            <?php endforeach?>
+            <!-- Постраничный вывод уроков -->
+            <?php for ($i = $page * $count; $i < ($page + 1 ) * $count; $i++) : ?>
+                <?php if ($lessons[$i]["id"] != NULL) : ?>
+                    <div class="lessons__item">
+                        <div class="lessons__item-name"><a class="lessons__item-name-link" href="lesson.php?id=<?=$lessons[$i]["id"]?>"><?= $lessons[$i]["title"]?></a></div>
+                        <div class="lessons__item-date">Опубликовано: <?= $lessons[$i]["date"]?></div>
+                    </div>
+                <?php endif?>
+            <?php endfor?>
+        </div>
+        <div class="page-list">
+            <?php for ($p = 0; $p <= $page_count; $p++) :?>
+                <!-- Если выбрана категория -->
+                <?php if ($_GET['action'] != NULL) : ?>
+                    <?php 
+                        // Получаем GET параметры из URL
+                        $action = $_GET['action'];
+                        $id = $_GET['id'];
+                    ?>
+                    <a href="?action=<?=$action?>&id=<?=$id?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                <?php else : ?>
+                    <a href="?page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                <?php endif;?>
+            <?php endfor;?>
         </div>
     </div>
     <script src="../script.js"></script>
