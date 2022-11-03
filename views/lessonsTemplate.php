@@ -2,7 +2,7 @@
     // Пагинация
     $page = $_GET["page"];
     // Количество выводимых уроков на странице
-    $count = 6;
+    $count = 8;
     // Вычисляем количество страниц
     $page_count = floor(count($lessons) / $count);
 ?>

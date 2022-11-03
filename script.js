@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Административная страница
   let adminlessonsItemNames = document.querySelectorAll(".admin-lessons__item-name");
+  let lessonName = document.querySelectorAll(".lesson-name");
 
   if (searchInput) {
     searchInput.addEventListener("change", (event) => {
@@ -30,8 +31,15 @@ window.addEventListener("DOMContentLoaded", () => {
       }
       adminlessonsItemNames.forEach((itemName, itemIndex) => {
         if (!itemName.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
-          console.log(itemName.parentNode);
           itemName.parentNode.parentNode.style.display = "none";
+        }
+      });
+      lessonName.forEach((item) => {
+        if (item.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
+          item.nextElementSibling.style.display = "flex";
+        }
+        if (!item.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
+          item.style.display = "none";
         }
       });
     });
@@ -47,23 +55,27 @@ window.addEventListener("DOMContentLoaded", () => {
   let categoryBtns = document.querySelectorAll(".categories__btn");
   let moreCategoriesBtn = document.querySelector(".categories__more-btn");
 
-  if (categoryBtns.length <= 10) {
+  if (categoryBtns.length <= 10 && moreCategoriesBtn) {
     moreCategoriesBtn.style.display = "none";
   }
 
-  categoryBtns.forEach((btn, btnIndex) => {
-    if (btnIndex > 9) {
-      btn.style.display = "none";
-    }
-  });
-
-  moreCategoriesBtn.addEventListener("click", (e) => {
+  if (categoryBtns) {
     categoryBtns.forEach((btn, btnIndex) => {
       if (btnIndex > 9) {
-        btn.style.display = "flex";
-        moreCategoriesBtn.style.display = "flex";
-        e.target.style.display = "none";
+        btn.style.display = "none";
       }
     });
-  });
+  }
+
+  if (moreCategoriesBtn) {
+    moreCategoriesBtn.addEventListener("click", (e) => {
+      categoryBtns.forEach((btn, btnIndex) => {
+        if (btnIndex > 9) {
+          btn.style.display = "flex";
+          moreCategoriesBtn.style.display = "flex";
+          e.target.style.display = "none";
+        }
+      });
+    });
+  }
 });

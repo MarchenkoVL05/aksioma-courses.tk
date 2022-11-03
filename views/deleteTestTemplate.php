@@ -15,18 +15,34 @@
 <body>
     <div class="container">
         <div class="go-back"><a class="go-back__link" href="admin/index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
-        <!-- Кусок вёрстки взят из административной страницы, чтобы не мучиться с классами CSS -->
-        <div class="admin-lessons">
-        <?php foreach ($questions as $question) : ?>
-            <div class="admin-lessons__item">
-                <div class="admin-lessons__item-descr">
-                    <div class="admin-lessons__item-name admin-lessons__item-name--test-delete"><?= $question["q_name"]?></div>
-                </div>
-                <div class="admin-btns-wrapper">
-                    <div class="admin-lessons__edit-btn"><a href="../index.php?action=deletetest&q_id=<?=$question["q_id"]?>"><img class="admin-btn-img" src="../images/trash.png" alt="Удалить"></a></div>
-                </div>
+        <!--  -->
+        <!-- Поиск -->
+        <div class="search__wrapper search__wrapper--delete-Q">
+            <div class="search">
+                <input class="search-input" type="text" placeholder="Урок или вопрос + Enter">
+                <button class="search__btn"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
             </div>
-        <?php endforeach?>
+        </div>
+        <!--  -->
+        <div class="admin-lessons">
+            <!-- Кусок вёрстки взят из административной страницы, чтобы не мучиться с классами CSS -->
+            <?php foreach ($questions as $question) : ?>
+                <?php foreach ($lessons as $lesson) : ?>
+                    <?php if ($question["q_lesson"] == $lesson["id"]) : ?>
+                        <div class="delete-question-wrapper">
+                            <div class="lesson-name"><span>Урок: </span><?=$lesson["title"]?></div>
+                            <div class="admin-lessons__item">
+                                <div class="admin-lessons__item-descr">
+                                    <div class="admin-lessons__item-name admin-lessons__item-name--test-delete"><?= $question["q_name"]?></div>
+                                </div>
+                                <div class="admin-btns-wrapper">
+                                    <div class="admin-lessons__edit-btn"><a href="../index.php?action=deletetest&q_id=<?=$question["q_id"]?>"><img class="admin-btn-img" src="../images/trash.png" alt="Удалить"></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif?>
+                <?php endforeach?>
+            <?php endforeach?>
         </div>
         <!--  -->
     </div>
