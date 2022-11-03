@@ -53,6 +53,19 @@ a {
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.465);
 }
 
+.page-btn--yellow:hover {
+  background-color: #d1b900a6;
+  border: 1px solid #d1b900a6;
+  color: #ffff;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.465);
+}
+.page-btn--active-yellow {
+  background-color: #d1b900a6;
+  border: 1px solid #d1b900a6;
+  color: #ffff;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.465);
+}
+
 /* Авторизация */
 .auth-form {
   display: flex;
@@ -270,6 +283,9 @@ a {
 }
 
 .categories__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 50px;
   padding: 10px 20px;
   border: none;
@@ -950,4 +966,35 @@ a {
 
 .check-text-results__meaning {
   font-size: 20px;
+}
+
+.categories__more {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.categories__more-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  font-size: 16px;
+  border: none;
+  color: #7b7b7b;
+  transition: 0.3s all;
+  cursor: pointer;
+}
+.categories__more-btn:hover {
+  color: black;
+}
+
+.categories__more-btn span {
+  font-size: 26px;
+}
+
+.pagination-dots {
+  display: flex;
+  align-items: flex-end;
+  font-size: 26px;
 }

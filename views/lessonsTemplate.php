@@ -1,6 +1,5 @@
 <?php
     // Пагинация
-
     $page = $_GET["page"];
     // Количество выводимых уроков на странице
     $count = 6;
@@ -54,11 +53,12 @@
                 class="categories__btn <?php if ($_GET['id'] == $category["id"]) echo 'categories__btn--active'?>"><?= $category["category_name"]?></button>
                 <?php endforeach ?>
             </div>
+            <div class="categories__more"><button class="categories__more-btn">больше категорий <span>&darr;</span></button></div>
         </div>
         <!-- Список уроков -->
         <div class="lessons">
             <!-- Постраничный вывод уроков -->
-            <?php for ($i = $page * $count; $i < ($page + 1 ) * $count; $i++) : ?>
+            <?php for ($i = $page * $count; $i < ($page + 1) * $count; $i++) : ?>
                 <?php if ($lessons[$i]["id"] != NULL) : ?>
                     <div class="lessons__item">
                         <div class="lessons__item-name"><a class="lessons__item-name-link" href="lesson.php?id=<?=$lessons[$i]["id"]?>"><?= $lessons[$i]["title"]?></a></div>
@@ -68,19 +68,51 @@
             <?php endfor?>
         </div>
         <div class="page-list">
-            <?php for ($p = 0; $p <= $page_count; $p++) :?>
-                <!-- Если выбрана категория -->
-                <?php if ($_GET['action'] != NULL) : ?>
-                    <?php 
-                        // Получаем GET параметры из URL
-                        $action = $_GET['action'];
-                        $id = $_GET['id'];
-                    ?>
-                    <a href="?action=<?=$action?>&id=<?=$id?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
-                <?php else : ?>
-                    <a href="?page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
-                <?php endif;?>
-            <?php endfor;?>
+            <?php if ($page_count <= 5) : ?>
+
+                <?php for ($p = 0; $p <= $page_count; $p++) :?>
+                    <!-- Если выбрана категория -->
+                    <?php if ($_GET['action'] != NULL) : ?>
+                        <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                    <?php else : ?>
+                        <a href="?page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                    <?php endif;?>
+                <?php endfor;?>
+
+            <?php else : ?>
+
+                <!-- Выводим первые 5 страниц -->
+                <?php if ($_GET["page"] < 4) : ?>
+                    <?php for ($p = 0; $p < 5; $p++) : ?>
+                        <?php if ($_GET['action'] != NULL) : ?>
+                        <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                        <?php else : ?>
+                            <a href="?page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                        <?php endif;?>
+                        <!--  -->
+                    <?php endfor?>
+                    <div class="pagination-dots">...</div>
+                    <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$page_count?></button></a>
+                <!-- Нажата последняя страница перед "..." -->
+                <?php elseif($_GET["page"] >= 4 && (($_GET["page"] + 5) < $page_count)) : ?>
+                    <?php for ($p = $_GET["page"] - 3; $p < $_GET["page"] + 2; $p++) : ?>
+                        <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                    <?php endfor?>
+                    <div class="pagination-dots">...</div>
+                    <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$page_count - 1?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$page_count?></button></a>
+                <!-- Убрать точки в конце списка страниц -->
+                <?php elseif (($_GET["page"] + 5) < $page_count) : ?>
+                    <?php for ($p = $_GET["page"] - 1; $p < $page_count; $p++) : ?>
+                        <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                    <?php endfor?>
+                <!-- Конец списка страниц -->
+                <?php elseif (($_GET["page"] + 5) >= $page_count) : ?>
+                    <div class="pagination-dots">...</div>
+                    <?php for ($p = $_GET["page"] - 2; $p < $page_count; $p++) : ?>
+                        <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
+                    <?php endfor?>
+                <?php endif?>
+            <?endif?>
         </div>
     </div>
     <script src="../script.js"></script>

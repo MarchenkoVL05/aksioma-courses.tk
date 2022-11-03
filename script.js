@@ -42,4 +42,28 @@ window.addEventListener("DOMContentLoaded", () => {
       window.location.reload();
     });
   }
+
+  // Больше категорий
+  let categoryBtns = document.querySelectorAll(".categories__btn");
+  let moreCategoriesBtn = document.querySelector(".categories__more-btn");
+
+  if (categoryBtns.length <= 10) {
+    moreCategoriesBtn.style.display = "none";
+  }
+
+  categoryBtns.forEach((btn, btnIndex) => {
+    if (btnIndex > 9) {
+      btn.style.display = "none";
+    }
+  });
+
+  moreCategoriesBtn.addEventListener("click", (e) => {
+    categoryBtns.forEach((btn, btnIndex) => {
+      if (btnIndex > 9) {
+        btn.style.display = "flex";
+        moreCategoriesBtn.style.display = "flex";
+        e.target.style.display = "none";
+      }
+    });
+  });
 });

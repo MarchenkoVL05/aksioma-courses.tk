@@ -1,3 +1,12 @@
+<?php
+    // Пагинация
+
+    $page = $_GET["page"];
+    // Количество выводимых уроков на странице
+    $count = 8;
+    // Вычисляем количество страниц
+    $page_count = floor(count($lessons) / $count);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -45,6 +54,7 @@
                 </button>
                 <?php endforeach ?>
             </div>
+            <div class="categories__more"><button class="categories__more-btn">больше категорий <span>&darr;</span></button></div>
         </div>
         <!-- Список уроков -->
         <div class="admin-helps">
@@ -58,19 +68,71 @@
             </div>
         </div>
         <div class="admin-lessons">
-        <?php foreach ($lessons as $lesson) : ?>
-            <div class="admin-lessons__item">
-                <div class="admin-lessons__item-descr">
-                    <div class="admin-lessons__item-name"><?= $lesson["title"]?></div>
-                    <div class="admin-lessons__item-date"><?= $lesson["date"]?></div>
+        <!--  -->
+        <?php for ($i = $page * $count; $i < ($page + 1 ) * $count; $i++) : ?>
+            <?php if ($lessons[$i]["title"] != NULL) : ?>
+                <div class="admin-lessons__item">
+                    <div class="admin-lessons__item-descr">
+                        <div class="admin-lessons__item-name"><?= $lessons[$i]["title"]?></div>
+                        <div class="admin-lessons__item-date"><?= $lessons[$i]["date"]?></div>
+                    </div>
+                    <div class="admin-btns-wrapper">
+                        <div class="admin-lessons__edit-btn"><a href="../index.php?action=edit&id=<?=$lessons[$i]["id"]?>"><img class="admin-btn-img" src="../images/pencil.png" alt="Редактировать"></a></div>
+                        <div class="admin-lessons__edit-btn"><a href="../index.php?action=delete&id=<?=$lessons[$i]["id"]?>"><img class="admin-btn-img" src="../images/trash.png" alt="Удалить"></a></div>
+                    </div>
                 </div>
-                <div class="admin-btns-wrapper">
-                    <div class="admin-lessons__edit-btn"><a href="../index.php?action=edit&id=<?=$lesson["id"]?>"><img class="admin-btn-img" src="../images/pencil.png" alt="Редактировать"></a></div>
-                    <div class="admin-lessons__edit-btn"><a href="../index.php?action=delete&id=<?=$lesson["id"]?>"><img class="admin-btn-img" src="../images/trash.png" alt="Удалить"></a></div>
-                </div>
-            </div>
-        <?php endforeach?>
+            <?php endif;?>
+        <?php endfor?>
         </div>
+        <!--  -->
+                <div class="page-list">
+            <?php if ($page_count <= 5) : ?>
+
+                <?php for ($p = 0; $p <= $page_count; $p++) :?>
+                    <!-- Если выбрана категория -->
+                    <?php if ($_GET['action'] != NULL) : ?>
+                        <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$p + 1?></button></a>
+                    <?php else : ?>
+                        <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$p + 1?></button></a>
+                    <?php endif;?>
+                <?php endfor;?>
+
+            <?php else : ?>
+
+                <!-- Выводим первые 5 страниц -->
+                <?php if ($_GET["page"] < 4) : ?>
+                    <?php for ($p = 0; $p < 5; $p++) : ?>
+                        <?php if ($_GET['action'] != NULL) : ?>
+                        <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$p + 1?></button></a>
+                        <?php else : ?>
+                            <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$p + 1?></button></a>
+                        <?php endif;?>
+                        <!--  -->
+                    <?php endfor?>
+                    <div class="pagination-dots">...</div>
+                    <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$page_count?></button></a>
+                <!-- Нажата последняя страница перед "..." -->
+                <?php elseif($_GET["page"] >= 4 && (($_GET["page"] + 5) < $page_count)) : ?>
+                    <?php for ($p = $_GET["page"] - 3; $p < $_GET["page"] + 2; $p++) : ?>
+                        <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$p + 1?></button></a>
+                    <?php endfor?>
+                    <div class="pagination-dots">...</div>
+                    <a class="page-btn-link" href="?page=<?=$page_count - 1?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$page_count?></button></a>
+                <!-- Убрать точки в конце списка страниц -->
+                <?php elseif (($_GET["page"] + 5) < $page_count) : ?>
+                    <?php for ($p = $_GET["page"] - 1; $p < $page_count; $p++) : ?>
+                        <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$p + 1?></button></a>
+                    <?php endfor?>
+                <!-- Конец списка страниц -->
+                <?php elseif (($_GET["page"] + 5) >= $page_count) : ?>
+                    <div class="pagination-dots">...</div>
+                    <?php for ($p = $_GET["page"] - 2; $p < $page_count; $p++) : ?>
+                        <a class="page-btn-link" href="?page=<?=$p?>"><button class="page-btn page-btn--yellow <?php if ($p == $_GET["page"]) echo 'page-btn--active-yellow'?>"><?=$p + 1?></button></a>
+                    <?php endfor?>
+                <?php endif?>
+            <?endif?>
+        </div>
+        <!--  -->
     </div>
     <script src="../script.js"></script>
 </body>

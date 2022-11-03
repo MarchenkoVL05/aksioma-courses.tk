@@ -70,6 +70,8 @@
         let select1 = document.getElementById("select1");
         let select2 = document.getElementById("select2");
 
+        select1.firstElementChild.setAttribute('selected', 'selected');
+
         select1.addEventListener("change", async (e) => {
             var formData = new FormData();
             formData.append('category', e.target.value);
@@ -79,7 +81,6 @@
             })
             .then((response) => response.json())
             .then((result) => {
-                console.log(result);
                 changeSelect(result);
             });
         });

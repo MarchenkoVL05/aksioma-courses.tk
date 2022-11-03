@@ -44,7 +44,7 @@
             </div>
         <?php endif?>
         <div class="lesson-content"><?= $lesson["content"]?></div>
-        <a class="lesson-test-link" href="../index.php?action=test&id=<?=$lesson["id"]?>&username=<?=$username?>">Перейти к тестирование</a>
+        <a class="lesson-test-link" href="../index.php?action=test&id=<?=$lesson["id"]?>&username=<?=$username?>">Перейти к тестированию</a>
         <div class="lesson-date">Опубликовано: <?= $lesson["date"]?></div>
     </div>
 </body>
