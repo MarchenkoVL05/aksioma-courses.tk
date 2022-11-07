@@ -19,7 +19,7 @@
         <!-- Поиск -->
         <div class="search__wrapper search__wrapper--delete-Q">
             <div class="search">
-                <input class="search-input" type="text" placeholder="Урок или вопрос + Enter">
+                <input class="search-input--delete-Q" type="text" placeholder="Урок или вопрос + Enter">
                 <button class="search__btn"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
             </div>
         </div>

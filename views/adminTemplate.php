@@ -34,7 +34,7 @@
         <!-- Поиск -->
         <div class="search">
             <div class="search__inner">
-                <input class="search-input" type="text" placeholder="Поиск + Enter">
+                <input class="search-input search-input--admin" type="text" placeholder="Поиск + Enter">
                 <button class="search__btn search__btn--admin"><img class="search__btn-img" src="../images/cancel.png" alt="Отменить"></button>
                 <a href="../index.php?action=addtest"><button class="admin-create-lesson-btn admin-create-lesson-btn--test">Создать вопрос</button></a>
                 <a href="../index.php?action=deletetest"><button class="admin-create-lesson-btn admin-create-lesson-btn--test">Удалить вопрос</button></a>

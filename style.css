@@ -247,7 +247,23 @@ a {
   transition: 0.2s all;
 }
 
+.search-input--delete-Q {
+  height: 50px;
+  width: 300px;
+  padding: 10px 45px 10px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid rgb(221, 221, 221);
+  box-shadow: 4px 4px 8px 0px #35353533;
+  transition: 0.2s all;
+}
+
 .search-input:focus {
+  outline: none;
+  box-shadow: 2px 2px 4px 0px #adadad33;
+}
+
+.search-input--delete-Q:focus {
   outline: none;
   box-shadow: 2px 2px 4px 0px #adadad33;
 }

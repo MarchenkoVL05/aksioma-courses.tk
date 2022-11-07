@@ -28,6 +28,16 @@
     $lessons = lessons_all($link);
     $questions = test_all($link);
     include("views/testTemplate.php");
+  } else if ($action == "search") {
+    // Поиск в публичной части
+    $categories = categoies_all($link);
+    $lessons = lessons_all($link);
+    include("views/searchTemplate.php");
+  } else if ($action == "adminSearch") {
+    // Поиск в админке
+    $categories = categoies_all($link);
+    $lessons = lessons_all($link);
+    include("views/adminSearchTemplate.php");
   } else if ($action == "addtest") {
     // Добавить вопрос
     $categories = categoies_all($link);

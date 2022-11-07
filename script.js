@@ -1,55 +1,54 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Домашняя страница
-  let lessonsItemNames = document.querySelectorAll(".lessons__item-name");
-
+  // Домашняя страница - поиск
   let searchInput = document.querySelector(".search-input");
-  let searchCloseBtn = document.querySelector(".search__btn");
 
   if (searchInput) {
     searchInput.addEventListener("change", (event) => {
-      if (event.target.value !== "" && searchCloseBtn) {
-        searchCloseBtn.style.display = "block";
+      if (event.target.value) {
+        window.location.href = `index.php?action=search&word=${event.target.value}`;
       }
-      lessonsItemNames.forEach((itemName, itemIndex) => {
-        if (!itemName.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
-          itemName.parentNode.style.display = "none";
-        }
-      });
     });
   }
 
-  // Логику поиска на домашней и административной странице можно переписать в соответствии с DRY
+  // Админка - поиск
+  let searchInputAdmin = document.querySelector(".search-input--admin");
 
-  // Административная страница
-  let adminlessonsItemNames = document.querySelectorAll(".admin-lessons__item-name");
+  if (searchInputAdmin) {
+    searchInputAdmin.addEventListener("change", (event) => {
+      if (event.target.value) {
+        window.location.href = `../index.php?action=adminSearch&word=${event.target.value}`;
+      }
+    });
+  }
+
+  // Страница с удалением вопросов
+  let searchInputDeleteQ = document.querySelector(".search-input--delete-Q");
   let lessonName = document.querySelectorAll(".lesson-name");
+  let searchBtn = document.querySelector(".search__wrapper--delete-Q .search__btn");
 
-  if (searchInput) {
-    searchInput.addEventListener("change", (event) => {
-      if (event.target.value !== "" && searchCloseBtn) {
-        searchCloseBtn.style.display = "block";
+  if (searchInputDeleteQ) {
+    searchInputDeleteQ.addEventListener("change", (event) => {
+      if (event.target.value) {
+        searchBtn.style.display = "block";
+        lessonName.forEach((item) => {
+          if (item.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
+            item.nextElementSibling.style.display = "flex";
+          }
+          if (!item.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
+            item.nextElementSibling.style.display = "none";
+            item.style.display = "none";
+          }
+          if (item.nextElementSibling.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
+            item.nextElementSibling.style.display = "flex";
+            item.style.display = "block";
+          }
+        });
       }
-      adminlessonsItemNames.forEach((itemName, itemIndex) => {
-        if (!itemName.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
-          itemName.parentNode.parentNode.style.display = "none";
-        }
-      });
-      lessonName.forEach((item) => {
-        if (item.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
-          item.nextElementSibling.style.display = "flex";
-        }
-        if (!item.textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
-          item.style.display = "none";
-        }
-      });
     });
   }
-
-  if (searchCloseBtn) {
-    searchCloseBtn.addEventListener("click", () => {
-      window.location.reload();
-    });
-  }
+  searchBtn.addEventListener("click", (event) => {
+    window.location.href = "index.php?action=deletetest";
+  });
 
   // Больше категорий
   let categoryBtns = document.querySelectorAll(".categories__btn");
