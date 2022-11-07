@@ -24,6 +24,7 @@
                         <?php endif?>
                     <?endforeach?>
                     <div class="my-r__head">Результат за тестирование: <span><?php echo $result["test_results"]?></span></div>
+                    <div class="my-r__head my-r__head--try">Попытка: <span><?php echo $result["try"]?></span></div>
                 </div>
             <?php endforeach?>
         </div>

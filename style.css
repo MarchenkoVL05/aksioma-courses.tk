@@ -17,6 +17,10 @@ a {
   padding: 50px 15px;
 }
 
+.container--results {
+  width: 1000px;
+}
+
 .greeting {
   margin: 15px 0;
   font-size: 18px;
@@ -683,11 +687,12 @@ a {
 .userslist-grid {
   margin-top: 45px;
   font-size: 22px;
+  box-shadow: 0px 0px 12px 6px rgb(203 203 203 / 20%);
 }
 
 .grid-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 180px 180px 1fr;
   position: relative;
 }
 
@@ -732,7 +737,7 @@ a {
 .grid-column--bold {
   font-weight: 600;
   font-size: 18px;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .grid-column--fz-small {
@@ -935,6 +940,10 @@ a {
 
 .my-r__head b {
   font-weight: 600;
+}
+
+.my-r__head--try span {
+  color: #a7254c;
 }
 
 /*  */

@@ -13,7 +13,7 @@
     <title>Все уроки</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container container--results">
         <div class="go-back"><a class="go-back__link" href="/admin/index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
         <h1 class="userslist-title">Результаты Ваших учеников</h1>
         <div class="userslist-help">
@@ -30,6 +30,7 @@
             <div class="grid-row">
                 <div class="grid-column grid-column--bold">Имя</div>
                 <div class="grid-column grid-column--bold">Тест</div>
+                <div class="grid-column grid-column--bold">Попытка</div>
                 <div class="grid-column grid-column--bold">Результат</div>
                 <div class="grid-column grid-column--bold grid-column--fz-small">Требуют проверки</div>
             </div>
@@ -41,8 +42,13 @@
                         <div class="grid-column"><?=$lesson["title"]?></div>
                     <?php endif?>
                 <?php endforeach?>
+                <div class="grid-column"><?=$result['try']?></div>
                 <div class="grid-column"><?=$result['test_results']?>%</div>
-                <div class="grid-column"><a class="results-text-link" href="index.php?action=checktext&resultID=<?php echo $result['result_id']?>">ссылка</a></div>
+                <?php if ($result["test_text"]) : ?>
+                    <div class="grid-column"><a class="results-text-link" href="index.php?action=checktext&resultID=<?php echo $result['result_id']?>">ссылка</a></div>
+                <?php else: ?>
+                    <div class="grid-column">-</div>
+                <?php endif?>
                 <div class="delete-result">
                     <button class="delete-result-btn" onclick="location.href='index.php?action=deleteresult&result_id=<?=$result['result_id']?>'"><img class="delete-result-img" src="../images/delete.png" alt="Удалить результат"></button>
                 </div>

@@ -94,19 +94,19 @@
                     <div class="pagination-dots">...</div>
                     <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$page_count?></button></a>
                 <!-- Нажата последняя страница перед "..." -->
-                <?php elseif($_GET["page"] >= 4 && (($_GET["page"] + 5) < $page_count)) : ?>
+                <?php elseif($_GET["page"] >= 4 && (($_GET["page"] + 4) < $page_count)) : ?>
                     <?php for ($p = $_GET["page"] - 3; $p < $_GET["page"] + 2; $p++) : ?>
                         <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
                     <?php endfor?>
                     <div class="pagination-dots">...</div>
                     <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$page_count - 1?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$page_count?></button></a>
                 <!-- Убрать точки в конце списка страниц -->
-                <?php elseif (($_GET["page"] + 5) < $page_count) : ?>
+                <?php elseif (($_GET["page"] + 4) < $page_count) : ?>
                     <?php for ($p = $_GET["page"] - 1; $p < $page_count; $p++) : ?>
                         <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>
                     <?php endfor?>
                 <!-- Конец списка страниц -->
-                <?php elseif (($_GET["page"] + 5) >= $page_count) : ?>
+                <?php elseif (($_GET["page"] + 4) >= $page_count) : ?>
                     <div class="pagination-dots">...</div>
                     <?php for ($p = $_GET["page"] - 2; $p < $page_count; $p++) : ?>
                         <a href="?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>&page=<?=$p?>"><button class="page-btn <?php if ($p == $_GET["page"]) echo 'page-btn--active'?>"><?=$p + 1?></button></a>

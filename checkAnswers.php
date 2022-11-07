@@ -93,16 +93,37 @@
         $userResultsTest = round((($userRightAnswersCount / $rightAnswersCount) * 100), 2);
     }
 
-    // 
-    // 
+    //
     $username = $_POST['username'];
 
     $lessonID = $_POST['id_of_lesson'];
 
+    // 
     $users = users_all($link);
+    $results = results_all($link);
+
+    // Попытки юзера
+    $userTries = array();
+
+    // Если попытки не пустые, складываем все попытки юзера по данному тесту в массив, иначе попытка = 1
+    $try = 1;
+    if (!empty($results)) {
+        foreach ($results as $result) {
+            if (($result["username"] === $username) && ($result["id_of_lesson"] === $lessonID)) {
+                $userTries[] = $result["try"];
+            }
+        }
+    }
+
+    // Ищем максимальную (т.е. последнюю) попытку
+    if (!empty($userTries)) {
+        $try = max($userTries) + 1;
+    }
+
+    // Сохраняем результат
     foreach ($users as $user) {
         if ($user['username'] == $username) {
-            results_new($link, $username, $lessonID, $userResultsTest, $resultUserAnswerText);
+            results_new($link, $username, $lessonID, $userResultsTest, $try, $resultUserAnswerText);
         }
     }
 
