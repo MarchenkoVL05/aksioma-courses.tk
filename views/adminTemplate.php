@@ -28,7 +28,7 @@
         <p class="admin-text">Здесь вы можете редактировать Ваши курсы</p>
         <div class="admin-create-lesson-btns-wrapper">
             <a href="../index.php?action=add"><button class="admin-create-lesson-btn">Создать новый урок</button></a>
-            <a href="../index.php?action=addcategory"><button class="admin-create-lesson-btn">Новый раздел</button></a>
+            <a href="../index.php?action=addcategory"><button class="admin-create-lesson-btn">Новый курс</button></a>
             <a href="../index.php?action=userslist"><button class="admin-create-lesson-btn admin-create-lesson-btn--bg">Результаты тестов</button></a>
         </div>
         <!-- Назначить курс студенту -->
@@ -46,7 +46,7 @@
         </div>
         <!-- Управление категориями -->
         <div class="categories">
-            <div class="categories__title">Управление категориями:</div>
+            <div class="categories__title">Управление курсами:</div>
             <div class="categories__btn-wrapper">
                 <?php if ($categories) foreach ($categories as $category) : ?>
                 <button class="categories__btn categories__btn--admin">

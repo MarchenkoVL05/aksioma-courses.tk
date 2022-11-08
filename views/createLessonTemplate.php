@@ -24,7 +24,7 @@
                 <input class="add-lesson-input" type="text" name="title" value="<?=$lesson["title"]?>"  autofocus required>
             </label>
             <label class="add-lesson-label">
-                Выберите главу, к которой относится урок
+                Выберите курс, к которому относится урок
                 <div class="select">
                     <select name="category_id">
                         <?php foreach ($categories as $category) : ?>

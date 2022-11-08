@@ -46,15 +46,18 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  searchBtn.addEventListener("click", (event) => {
-    window.location.href = "index.php?action=deletetest";
-  });
+
+  if (searchBtn) {
+    searchBtn.addEventListener("click", (event) => {
+      window.location.href = "index.php?action=deletetest";
+    });
+  }
 
   // Больше категорий
   let categoryBtns = document.querySelectorAll(".categories__btn");
   let moreCategoriesBtn = document.querySelector(".categories__more-btn");
 
-  if (categoryBtns.length <= 10 && moreCategoriesBtn) {
+  if (categoryBtns.length <= 10) {
     moreCategoriesBtn.style.display = "none";
   }
 

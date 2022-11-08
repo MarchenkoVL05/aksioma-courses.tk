@@ -12,6 +12,12 @@
   require_once("models/users.php");
   // Модель результатов тестирования
   require_once("models/results.php");
+  // Модель связи пользователя и курса
+  require_once("models/user_category.php");
+
+  // Получаем информацию о пользователе из Bitrix24 API
+  require_once("getUserInfo.php");
+  $curUserName = getUserInfo();
 
   // Дескриптор соединения
   $link = db_connect();
@@ -150,6 +156,11 @@
       $lessons = lessons_filtered_by_category($link, $id);
       $categories = categoies_all($link);
     }
+    
+    $appointedCourses = user_category_all($link);
+    
+    $curUserName = getUserInfo();
+    
     include("views/lessonsTemplate.php");
 
   } else if ($action == 'auth') {
@@ -174,6 +185,8 @@
   } else if ($action == "appoint") {
     // Страница назначенные уроки
 
+    $appointedCourses = user_category_all($link);
+    $categories = categoies_all($link);
     include("views/appointTemplate.php");
 
   } else if ($action == "appointCourse") {
@@ -216,6 +229,7 @@
     // Иначе - просто вернуть все на главную страницу
       $lessons = lessons_all($link);
       $categories = categoies_all($link);
+      $appointedCourses = user_category_all($link);
       include("views/lessonsTemplate.php");
     }
 

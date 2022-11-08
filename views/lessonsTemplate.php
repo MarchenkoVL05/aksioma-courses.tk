@@ -5,6 +5,8 @@
     $count = 8;
     // Вычисляем количество страниц
     $page_count = floor(count($lessons) / $count);
+
+    $acCounter = '';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -29,7 +31,17 @@
         <!-- Кнопки -->
         <div class="admin-panel-buttons-wrapper">
             <a id="admin-panel-link" href="../admin/index.php"><button class="admin-panel-btn">Панель администратора</button></a>
-            <a href="index.php?action=appoint"><button class="admin-panel-btn admin-panel-btn--testResults">Назначенные уроки</button></a>
+            <a id="appoint-cur-link" href="index.php?action=appoint">
+                <button class="admin-panel-btn admin-panel-btn--testResults">
+                    Назначенные курсы
+                </button>
+                <?php foreach ($appointedCourses as $ac) : ?>
+                    <?php if ($ac["username"] == $curUserName) : ?>
+                        <?php $acCounter++?>
+                        <div class="appointed-cirlce"><?=$acCounter?></div>
+                    <?php endif?>
+                <?php endforeach?>
+            </a>
             <a id="my-results-link" href="index.php?action=myresults">
                 <button class="admin-panel-btn admin-panel-btn--testResults">
                     <img class="resluts-btn-img" src="../images/results.png" alt="Результаты"> Мои результаты
@@ -46,7 +58,7 @@
         </div>
         <!-- Выбор категории -->
         <div class="categories">
-            <div class="categories__title">Выбор категории:</div>
+            <div class="categories__title">Выберите курс:</div>
             <div class="categories__btn-wrapper">
                 <?php if ($categories) foreach ($categories as $category) : ?>
                 <button onclick="window.location.href='../index.php?action=filter&id=<?=$category['id']?>'" 
@@ -134,6 +146,9 @@
 
                 let myResultsLink = document.getElementById("my-results-link");
                 myResultsLink.href += `&username=${username}`;
+
+                let appointCurLink = document.getElementById("appoint-cur-link");
+                appointCurLink.href += `&username=${username}`;
             });
         });
     </script>

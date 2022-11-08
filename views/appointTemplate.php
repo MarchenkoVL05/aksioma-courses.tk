@@ -13,9 +13,26 @@
     <title>Назначенные уроки</title>
 </head>
 <body>
+    <!--  -->
+    <?php $user = users_get($link, $_GET["username"]); ?>
+    <!--  -->
     <div class="container">
-    <div class="go-back"><a class="go-back__link" href="javascript:window.history.back()"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
-    
+        <div class="go-back"><a class="go-back__link" href="javascript:window.history.back()"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
+        <p class="appoint-text appoint-text--bold"><img src="../images/teacher-1.png" alt="урок">Вам назначено прохождение следующих курсов: </p>
+        <p class="appoint-text--small">Жмите на название для быстрого перехода к нему!</p>
+        <div class="appointed-cur-wrapper">
+            <?php foreach ($appointedCourses as $ac) : ?>
+                <?php if ($ac["username"] == $user["username"]) : ?>
+                    <?php foreach ($categories as $category) : ?>
+                        <?php if ($category["category_name"] == $ac["category_name"]) : ?>
+                            <a href="index.php?action=filter&id=<?=$category["id"]?>">
+                                <div class="appointed-cur__item"><img src="../images/yt.png" alt="урок"><?=$ac["category_name"]?></div>
+                            </a>
+                        <?php endif?>
+                    <?php endforeach?>
+                <?php endif?>
+            <?php endforeach?>
+        </div>
     </div>
 </body>
 </html>

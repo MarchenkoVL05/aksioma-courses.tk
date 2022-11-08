@@ -39,4 +39,18 @@ function users_all($link) {
     return $users;
 }
 
+function users_get($link, $username) {
+    $t = "SELECT * FROM users WHERE username='%s'";
+    $query = sprintf($t, mysqli_real_escape_string($link, $username));
+    $result = mysqli_query($link, $query);
+
+    if (!$result) {
+        die(mysqli_error($link));
+    }
+
+    $user = mysqli_fetch_assoc($result);
+
+    return $user;
+}
+
 ?>

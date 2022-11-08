@@ -12,13 +12,13 @@
     <link href="../style.css" rel="stylesheet">
     <!-- Редактор текста Tiny -->
     <script src="https://cdn.tiny.cloud/1/btcy28zm7gkt490uwu9hv0hxl14b3j75j5o1vid0p7yjhk90/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <title>Создать категорию</title>
+    <title>Создать курс</title>
 </head>
 <body>
     <div class="container">
         <div class="go-back"><a class="go-back__link" href="javascript:window.history.back()"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
-        <h1 class="add-lesson-title"><img class="add-lesson-title__img" src="../images/stationery.png" alt="Создать урок"> Создание Категории</h1>
-        <p class="add-category-text">Группируйте уроки по категориям для удобства навигации по курсу :)</p>
+        <h1 class="add-lesson-title"><img class="add-lesson-title__img" src="../images/stationery.png" alt="Создать урок"> Создание Курса</h1>
+        <p class="add-category-text">Группируйте уроки по курсам для удобной навигации по приложению :)</p>
         <form class="add-lesson-form" action="../index.php?action=<?= $_GET["action"]?>&id=<?= $_GET["id"]?>" method="POST">
             <label class="add-lesson-label">
                 Название Категории
