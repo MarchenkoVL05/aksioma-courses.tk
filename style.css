@@ -205,6 +205,13 @@ a {
   color: #ffff;
 }
 
+.appointCourse-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  gap: 20px;
+}
+
 .search__wrapper {
   display: flex;
   align-items: center;
@@ -517,6 +524,14 @@ a {
   color: #ffff;
   transform: scale(0.98);
   box-shadow: 2px 2px 4px 0px rgba(34, 60, 80, 0.2);
+}
+
+.admin-create-lesson-btn--appoint {
+  background-color: rgba(67, 181, 44, 0.724);
+  color: white;
+}
+.admin-create-lesson-btn--appoint:hover {
+  background-color: rgba(61, 159, 41, 0.724);
 }
 
 .admin-create-lesson-btn--bg {
@@ -1039,4 +1054,117 @@ a {
 .lesson-name span {
   font-weight: 600;
   color: rgb(222, 0, 0);
+}
+
+/*  */
+.appoint-header {
+  margin-top: 20px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #d6d6d6;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 34px;
+  font-weight: 600;
+  color: #414141;
+}
+.appoint-header img {
+  height: 75px;
+}
+
+.appoint-text {
+  margin-top: 15px;
+  font-size: 24px;
+  line-height: 33px;
+}
+
+.appoint-course-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.appoint-course-input {
+  width: 300px;
+  height: 50px;
+  margin-top: 25px;
+  font-size: 18px;
+}
+
+.selects-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Распределение курсов: Стилизация Select'ов */
+[data-am-select] {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+[data-am-select]:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: -2;
+}
+[data-am-select]:after {
+  content: "▾";
+  position: absolute;
+  display: block;
+  font-size: 24px;
+  top: 50%;
+  right: 15px;
+  margin-top: -0.5em;
+  line-height: 1;
+  z-index: -1;
+  color: #212121;
+  transition: color 200ms ease;
+}
+[data-am-select]:hover:after {
+  color: #545454;
+}
+[data-am-select] select {
+  width: calc(100% + 20px);
+  border: none;
+  background-color: transparent;
+  font: inherit;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 15px;
+  padding-right: 65px;
+  color: #212121;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+[data-am-select] select::-ms-expand {
+  display: none;
+}
+[data-am-select] select:focus {
+  outline: none;
+}
+/*  */
+
+.appoint-course-input {
+  font-weight: 600;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  background: linear-gradient(117deg, #00b62ba1 0%, #00b397 100%);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 2px 5px 10px 1px rgb(34 60 80 / 46%);
+  transition: 0.3s all;
+}
+.appoint-course-input:hover {
+  box-shadow: 2px 3px 7px 1px rgb(124 124 124 / 46%);
+  transform: scale(0.97);
 }

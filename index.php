@@ -24,22 +24,29 @@
   }
 
   if ($action == "test") {
+
     $lesson_id = $_GET['id'];
     $lessons = lessons_all($link);
     $questions = test_all($link);
     include("views/testTemplate.php");
+
   } else if ($action == "search") {
+
     // Поиск в публичной части
     $categories = categoies_all($link);
     $lessons = lessons_all($link);
     include("views/searchTemplate.php");
+
   } else if ($action == "adminSearch") {
     // Поиск в админке
+
     $categories = categoies_all($link);
     $lessons = lessons_all($link);
     include("views/adminSearchTemplate.php");
+
   } else if ($action == "addtest") {
     // Добавить вопрос
+
     $categories = categoies_all($link);
     $lessons = lessons_all($link);
     if (!empty($_POST)) {
@@ -51,7 +58,9 @@
       header("Refresh: 0, url=/admin/index.php");
     }
     include("views/createTestTemplate.php");
+    
   } else if ($action == "deletetest") {
+
     // Удалить вопрос(ы)
     $lessons = lessons_all($link);
     $questions = test_all($link);
@@ -62,7 +71,9 @@
       header("Refresh: 0, url=index.php?action=deletetest");
     }
     include("views/deleteTestTemplate.php");
+
   } else if ($action == "add") {
+
     // Добавить урок
     if (!empty($_POST)) {
       lessons_new($link, $_POST["title"], $_POST["date"], $_POST["content"], $_POST["video"], $_POST["category_id"]);
@@ -70,8 +81,9 @@
     }
     $categories = categoies_all($link);
     include("views/createLessonTemplate.php");
-    // Редактировать урок
+
   } else if ($action == "edit") {
+    // Редактировать урок
     if (!isset($_GET["id"])) {
       header("Refresh: 0, url=/admin/index.php");
     }
@@ -86,20 +98,26 @@
 
     $lesson = lessons_get($link, $id);
     include("views/createLessonTemplate.php");
-    // Удалить урок
+
   } else if ($action == "delete") {
+
+    // Удалить урок
     $id = $_GET["id"];
     $lesson = lessons_delete($link, $id);
     header("Refresh: 0, url=/admin/index.php");
-    // Добавить категорию
+
   } else if ($action == "addcategory") {
+    // Добавить категорию
+
     if (!empty($_POST)) {
       category_new($link, $_POST["category_name"]);
       header("Refresh: 0, url=/admin/index.php");
     }
     include("views/createCategoryTemplate.php");
-    // Редактировать категорию
+    
   } else if ($action == "editcategory") {
+
+    // Редактировать категорию
     if (!isset($_GET["id"])) {
       header("Refresh: 0, url=/admin/index.php");
     }
@@ -113,13 +131,17 @@
 
     $category = categories_get($link, $id);
     include("views/createCategoryTemplate.php");
-    // Удалить категорию
+
   } else if ($action == "deletecategory") {
+    // Удалить категорию
+
       $id = $_GET["id"];
       categories_delete($link, $id);
       header("Refresh: 0, url=/admin/index.php");
-      // Фильтр по категориям
+
   } else if ($action == "filter") {
+    // Фильтр по категориям
+
     $id = $_GET["id"];
     if ($id == '0') {
       $lessons = lessons_all($link);
@@ -129,40 +151,67 @@
       $categories = categoies_all($link);
     }
     include("views/lessonsTemplate.php");
+
   } else if ($action == 'auth') {
     // Авторизоваться в приложении
+
     $username = $_GET['username'];
     $users = users_all($link);
-    foreach($users as $userCurrent) {
-      if ($userCurrent['username'] == $_GET['username']) {
-        header('Location: index.php');
-        return;
-      } else if ($userCurrent['username'] != $_GET['username']) {
-        users_new($link, $_GET['username']);
-      }
+    $userNamesFromDB = array();
+
+    foreach ($users as $user) {
+      $userNamesFromDB[] = $user["username"];
     }
+
+    if (in_array($username, $userNamesFromDB)) {
+      header("Refresh: 0, url=index.php");
+    } else {
+      users_new($link, $username);
+    }
+
     include("views/authSuccess.php");
+
+  } else if ($action == "appoint") {
+    // Страница назначенные уроки
+
+    include("views/appointTemplate.php");
+
+  } else if ($action == "appointCourse") {
+    // Назначить курс в админке
+    
+    $users = users_all($link);
+    $categories = categoies_all($link);
+    include("views/appointAdminTemplate.php");
+
   } else if ($action == "userslist") {
     // Список тестов учеников в админке
+
     $results = results_all($link);
     $lessons = lessons_all($link);
     include("views/adminUsersTemplate.php");
+
   } else if ($action == 'checktext') {
     // Страница текстового ответа ученика на тест 
+
     $results = results_all($link);
     $resultID = $_GET['resultID'];
     include("views/textResultTemplate.php");
+
   } else if ($action == 'deleteresult') {
     // Удалить результат ученика
+
     $resultID = $_GET["result_id"];
     results_delete($link, $resultID);
     header("Refresh: 0, url=index.php?action=userslist");
+
   } else if ($action == 'myresults') {
     // Страница Мои результаты
+
     $resultUsername = $_GET['username'];
     $myResults = results_get($link, $resultUsername);
     $lessons = lessons_all($link);
     include("views/myResultsTemplate.php");
+
   } else {
     // Иначе - просто вернуть все на главную страницу
       $lessons = lessons_all($link);

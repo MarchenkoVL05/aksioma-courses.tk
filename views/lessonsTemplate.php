@@ -29,7 +29,7 @@
         <!-- Кнопки -->
         <div class="admin-panel-buttons-wrapper">
             <a id="admin-panel-link" href="../admin/index.php"><button class="admin-panel-btn">Панель администратора</button></a>
-            <a href="#"><button class="admin-panel-btn admin-panel-btn--testResults">Назначенные уроки</button></a>
+            <a href="index.php?action=appoint"><button class="admin-panel-btn admin-panel-btn--testResults">Назначенные уроки</button></a>
             <a id="my-results-link" href="index.php?action=myresults">
                 <button class="admin-panel-btn admin-panel-btn--testResults">
                     <img class="resluts-btn-img" src="../images/results.png" alt="Результаты"> Мои результаты
