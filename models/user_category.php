@@ -53,4 +53,21 @@
     
         return $lesson;
     }
+
+    function user_category_delete($link, $id) {
+        $id = (int)$id;
+    
+        if ($id == 0) {
+            return false;
+        }
+    
+        $query = sprintf("DELETE FROM user_category WHERE user_category_id='%d'", $id);
+        $result = mysqli_query($link, $query);
+    
+        if (!$result) {
+            die(mysqli_error($link));
+        }
+    
+        return mysqli_affected_rows($link);
+    }
 ?>

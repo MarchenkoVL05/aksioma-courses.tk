@@ -53,4 +53,21 @@ function users_get($link, $username) {
     return $user;
 }
 
+function users_delete($link, $id) {
+    $id = (int)$id;
+
+    if ($id == 0) {
+        return false;
+    }
+
+    $query = sprintf("DELETE FROM users WHERE id='%d'", $id);
+    $result = mysqli_query($link, $query);
+
+    if (!$result) {
+        die(mysqli_error($link));
+    }
+
+    return mysqli_affected_rows($link);
+}
+
 ?>

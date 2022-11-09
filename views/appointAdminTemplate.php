@@ -17,6 +17,7 @@
         <div class="go-back"><a class="go-back__link" href="admin/index.php"><img class="go-back__img" src="../images/rewind.png" alt="Вернуться"> Вернуться назад</a></div>
         <div class="appoint-header"> <img src="../images/teacher.png" alt="Учитель"> Распределение курсов</div>
         <p class="appoint-text">Назначтье прохождение курса выбранному ученику и он появится в его уведомлениях!</p>
+        <a href="index.php?action=users" class="appoint-text--link">Обновить список авторизованных пользователей</a>
         <!--  -->
         <form class="appoint-course-form" action="appointCourseToUser.php" method="POST">
             <div class="selects-wrapper">
@@ -41,6 +42,16 @@
             <input class="appoint-course-input" type="submit" value="Назначить">
         </form>
         <!--  -->
+        <div class="appoint-table-header">Назначенные уроки</div>
+        <?php foreach ($appointedCourses as $ac) : ?>
+            <div class="appoint-table">
+                <div class="appoint-table__item">
+                    <div class="appoint-table__item-name"><?=$ac["username"]?></div>
+                    <div class="appoint-table__item-course"><?=$ac["category_name"]?></div>
+                    <a href="index.php?action=deleteAppointedCourse&id=<?=$ac["user_category_id"]?>"><button class="appoint-table__item-btn">Удалить</button></a>
+                </div>
+            </div>
+        <?php endforeach?>
     </div>
 </body>
 </html>

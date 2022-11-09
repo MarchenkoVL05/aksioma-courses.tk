@@ -17,7 +17,6 @@
 
   // Получаем информацию о пользователе из Bitrix24 API
   require_once("getUserInfo.php");
-  $curUserName = getUserInfo();
 
   // Дескриптор соединения
   $link = db_connect();
@@ -159,8 +158,6 @@
     
     $appointedCourses = user_category_all($link);
     
-    $curUserName = getUserInfo();
-    
     include("views/lessonsTemplate.php");
 
   } else if ($action == 'auth') {
@@ -194,8 +191,31 @@
     
     $users = users_all($link);
     $categories = categoies_all($link);
+    $appointedCourses = user_category_all($link);
     include("views/appointAdminTemplate.php");
 
+  } else if ($action == 'deleteAppointedCourse') {
+    // Удалить назначенный урок
+
+    $id = $_GET["id"];
+    user_category_delete($link, $id);
+
+    header("Refresh: 0, url=index.php?action=appointCourse");
+
+  } else if ($action == "users") {
+    // Страница авторизованных пользователей
+
+    $users = users_all($link);
+
+    include ("views/usersTemplate.php");
+
+  } else if ($action == 'deleteUser') {
+    // Удалить авторизованного пользователя
+
+    $id = $_GET["id"];
+    users_delete($link, $id);
+    
+    header("Refresh: 0, url=index.php?action=users");
   } else if ($action == "userslist") {
     // Список тестов учеников в админке
 

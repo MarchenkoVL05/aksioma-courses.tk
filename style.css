@@ -1210,6 +1210,14 @@ a {
   font-size: 16px;
 }
 
+.appoint-text--link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: underline;
+  color: #535353;
+  font-size: 16px;
+}
+
 /*  */
 #appoint-cur-link {
   position: relative;
@@ -1230,13 +1238,57 @@ a {
   animation-name: resize;
   animation-duration: 0.7s;
   animation-delay: 1s;
+  animation-iteration-count: 3;
 }
 
 @keyframes resize {
   from {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
   to {
     transform: scale(1);
   }
+}
+
+/*  */
+.appoint-table-header {
+  margin-top: 50px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.appoint-table {
+  margin: 30px auto 0;
+}
+
+.appoint-table__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.appoint-table__item-name,
+.appoint-table__item-course {
+  width: 350px;
+  font-size: 22px;
+}
+
+.appoint-table__item-btn {
+  width: 130px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ffd000 0%, #ffac00 100%);
+  box-shadow: 11px 11px 20px -8px rgba(135, 135, 135, 1);
+  color: rgb(43, 43, 43);
+  transition: 0.2s all;
+}
+.appoint-table__item-btn:hover {
+  box-shadow: 7px 7px 10px -8px rgb(157 157 157);
+  transform: scale(0.99);
 }
