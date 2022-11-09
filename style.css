@@ -1196,13 +1196,56 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 }
 .appointed-cur__item:hover {
   color: rgb(36, 184, 127);
 }
 
+.appointed-cur__item-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .appointed-cur__item img {
   height: 50px;
+}
+
+.done-img-link {
+  position: absolute;
+  right: 0;
+}
+
+.done-img {
+  opacity: 0;
+  height: 30px !important;
+  transition: 0.2s all;
+}
+
+.done-img--opacity1 {
+  opacity: 1;
+}
+
+.appoint-done-help {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.appoint-done-help-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.appoint-table__item-not-done {
+  height: 30px;
+  width: 30px;
+}
+
+.appointed-cur__item:hover .done-img {
+  opacity: 100;
 }
 
 .appoint-text--small {
@@ -1264,7 +1307,7 @@ a {
 
 .appoint-table__item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 50px;
 }

@@ -36,7 +36,7 @@
                     Назначенные курсы
                 </button>
                 <?php foreach ($appointedCourses as $ac) : ?>
-                    <?php if ($ac["username"] == $curUserName) : ?>
+                    <?php if ($ac["username"] == $curUserName && $ac["done"] != 1) : ?>
                         <?php $acCounter++?>
                         <div class="appointed-cirlce"><?=$acCounter?></div>
                     <?php endif?>

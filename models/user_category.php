@@ -70,4 +70,24 @@
     
         return mysqli_affected_rows($link);
     }
+
+    function user_category_edit($link, $id) {
+        $id = (int)$id;
+    
+        if ($id == '') {
+            return false;
+        }
+    
+        $sql = "UPDATE user_category SET done=1 WHERE user_category_id='%d'";
+    
+        $query = sprintf($sql, $id);
+    
+        $result = mysqli_query($link, $query);
+    
+        if (!$result) {
+            die(mysqli_query($link, $query));
+        }
+    
+        return mysqli_affected_rows($link);
+    }
 ?>

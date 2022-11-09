@@ -202,6 +202,13 @@
 
     header("Refresh: 0, url=index.php?action=appointCourse");
 
+  } else if ($action == 'courseDone') {
+    // Отменить курс пройденым
+    $id = $_GET["id"];
+    user_category_edit($link, $id);
+    header("Refresh: 0, url=index.php");
+
+
   } else if ($action == "users") {
     // Страница авторизованных пользователей
 

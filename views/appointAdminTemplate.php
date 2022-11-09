@@ -48,6 +48,11 @@
                 <div class="appoint-table__item">
                     <div class="appoint-table__item-name"><?=$ac["username"]?></div>
                     <div class="appoint-table__item-course"><?=$ac["category_name"]?></div>
+                    <?php if ($ac["done"] == 1) : ?>
+                        <div class="appoint-table__item-done"><img class="done-img done-img--opacity1" src="../images/done.png" alt="Пройден!"></div>
+                    <?php else : ?>
+                        <div class="appoint-table__item-not-done"></div>
+                    <?php endif?>
                     <a href="index.php?action=deleteAppointedCourse&id=<?=$ac["user_category_id"]?>"><button class="appoint-table__item-btn">Удалить</button></a>
                 </div>
             </div>
