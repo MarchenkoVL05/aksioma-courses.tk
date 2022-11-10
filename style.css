@@ -401,6 +401,11 @@ a {
     rgba(0, 144, 114, 0.8435749299719888) 100%
   );
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.645);
+  transition: 0.2s all;
+}
+.lesson-test-link:hover {
+  transform: scale(0.97);
+  box-shadow: 2px 2px 8px 0px rgba(65, 90, 109, 0.645);
 }
 
 .lesson-date {
@@ -609,17 +614,17 @@ a {
   width: 300px;
   height: 50px;
   background: linear-gradient(90deg, rgba(48, 190, 129, 1) 0%, rgba(94, 217, 201, 1) 100%);
-  border: 1px solid rgb(197, 197, 197);
+  border: none;
   border-radius: 30px;
+  box-shadow: 9px 14px 19px -8px rgb(175 175 175);
   cursor: pointer;
-  box-shadow: 4px 4px 8px 0px rgba(36, 36, 36, 0.302);
   color: white;
   transition: 0.2s all;
 }
 
 .add-lesson-save:hover {
-  transform: scale(0.98);
-  box-shadow: 2px 2px 6px 0px rgba(36, 36, 36, 0.302);
+  transform: scale(0.97);
+  box-shadow: 5px 10px 19px -5px rgb(212, 212, 212);
 }
 
 /* Добавить Категорию */
@@ -853,7 +858,6 @@ a {
 .add-test-submit {
   display: block;
   margin-top: 20px;
-  box-shadow: 4px 4px 8px 0px rgb(0 0 0 / 38%);
 }
 
 /* Страница с результатами */
@@ -1160,12 +1164,11 @@ a {
   cursor: pointer;
   border-radius: 30px;
   background: linear-gradient(117deg, #00b62ba1 0%, #00b397 100%);
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  box-shadow: 2px 5px 10px 1px rgb(34 60 80 / 46%);
+  box-shadow: 9px 14px 19px -8px rgb(163 163 163);
   transition: 0.3s all;
 }
 .appoint-course-input:hover {
-  box-shadow: 2px 3px 7px 1px rgb(124 124 124 / 46%);
+  box-shadow: 5px 5px 10px -8px rgb(218, 218, 218);
   transform: scale(0.97);
 }
 

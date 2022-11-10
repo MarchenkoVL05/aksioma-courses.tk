@@ -1,7 +1,7 @@
 <?php
 
     function categoies_all($link) {
-        $query = "SELECT * FROM categories ORDER BY id DESC";
+        $query = "SELECT * FROM categories ORDER BY id ASC";
         $result = mysqli_query($link, $query);
 
         if (!$result) {
